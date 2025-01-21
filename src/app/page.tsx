@@ -1,28 +1,39 @@
+"use client";
+
+import ThemeProvider, { ThemeContext } from "@/providers/ThemeProvider";
+import SignUpForm from "@/widgets/SignUpForm/SignUpForm";
 import Image from "next/image";
+import Link from "next/link";
+import { useContext, useEffect } from "react";
 import styles from "./page.module.scss";
 
 export default function Home() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <div className={styles.try_scss}>Trying SCSS</div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-      </footer>
+      <ThemeProvider>
+        <Content />
+        <SignUpForm />
+      </ThemeProvider>
+    </div>
+  );
+}
+
+function Content() {
+  const { themeName, toggleTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", themeName);
+  }, [themeName]);
+
+  return (
+    <div className={styles.container}>
+      <h2>Welcome to the app</h2>
+      <button className={styles.button} onClick={toggleTheme}>
+        Toggle Theme
+      </button>
+      <Link href={"/products"}>Products</Link>
+      <Image src={"/close.svg"} alt={"Close"} width={24} height={24} />
+      <Image src={"/close.svg"} alt={"Close"} width={24} height={24} />
     </div>
   );
 }
