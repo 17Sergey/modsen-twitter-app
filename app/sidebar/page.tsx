@@ -1,5 +1,5 @@
 import Sidebar from "@/widgets/Sidebar";
 
-export default function LoginPage() {
+export default function SidebarPage() {
   return <Sidebar />;
 }

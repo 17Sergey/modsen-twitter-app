@@ -1,5 +1,7 @@
-import SignUpForm from "@/widgets/SignUpForm/SignUpForm";
+"use client";
 
-export default function SignUpPage() {
-  return <SignUpForm />;
+import SignupPage from "@/pages/SignupPage";
+
+export default function Signup() {
+  return <SignupPage />;
 }

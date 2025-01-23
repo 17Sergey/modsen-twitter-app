@@ -1,10 +1,7 @@
-import ThemeProvider from "@/app/providers/ThemeProvider";
-import LoginForm from "@/widgets/LoginForm";
+"use client";
 
-export default function LoginPage() {
-  return (
-    <ThemeProvider>
-      <LoginForm />
-    </ThemeProvider>
-  );
+import LoginPage from "@/pages/LoginPage";
+
+export default function Login() {
+  return <LoginPage />;
 }

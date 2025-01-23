@@ -1,3 +1,4 @@
+import App from "@/app";
 import "@/shared/styles/global.scss";
 
 import type { Metadata } from "next";
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
       <body className={`${roboto.variable} ${robotoSans.variable}`}>
-        {children}
+        <App>{children}</App>
       </body>
     </html>
   );
