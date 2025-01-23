@@ -1,20 +1,31 @@
-/* Dark Theme Colors */
-$neutral-0: #ffffff;
-$neutral-500: #949497;
-$neutral-700: #626264;
-$neutral-900: #1a1a1c;
-
-$dark-overlay-8: #2b2b2e;
-
-$primary-500: #846bda;
-
 /* Light Theme Colors */
-$white-1: #ffffff;
-$white-2: #f8f8f8;
+$light-background: #ffffff;
+$light-background-neutral: #f7f9f9;
+$light-text-default: #000000;
+$light-text-neutral: #00000099;
+$light-neutral-border: #00000033;
+$light-input: #eff3f4;
+$light-search-placeholder: #5c6c79;
+$light-icon-neutral: #536471;
+$light-placeholder: #bbbbbb;
+$light-primary: #1da1f2;
+$light-secondary: #000000;
+$light-error: #ef1c5c;
+$light-icon: #000000;
+$light-like: #ef1c5c;
 
-$black-1: #232323;
-
-$grey-2: #b4b4b7;
-$grey-3: #949497;
-
-$blue-1: #1274cf;
+/* Dark Theme Colors */
+$dark-background: #181818;
+$dark-background-neutral: #121212;
+$dark-text-default: #ffffff;
+$dark-text-neutral: #ffffff99;
+$dark-neutral-border: #ffffff33;
+$dark-input: #2a2a2a;
+$dark-search-placeholder: #a3b5bc;
+$dark-icon-neutral: #a3b5bc;
+$dark-placeholder: #888888;
+$dark-primary: #1da1f2;
+$dark-secondary: #ffffff;
+$dark-error: #ef1c5c;
+$dark-icon: #ffffff;
+$dark-like: #ef1c5c;

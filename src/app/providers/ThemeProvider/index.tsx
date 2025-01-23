@@ -1,10 +1,13 @@
-import { createContext, PropsWithChildren, useState } from "react";
+"use client";
 
-// Theme names are declared in _themes.scss and need to match
-export const THEME_NAMES = {
-  LIGHT: "light",
-  DARK: "dark",
-};
+import { THEME_NAMES } from "@/shared/constants/constants";
+import {
+  createContext,
+  FC,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from "react";
 
 interface ContextProps {
   themeName: string;
@@ -16,7 +19,7 @@ export const ThemeContext = createContext<ContextProps>({
   toggleTheme: () => {},
 });
 
-const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
+const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [themeName, setThemeName] = useState(THEME_NAMES.LIGHT);
 
   const toggleThemeHandler = () => {
@@ -24,6 +27,10 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
       themeName === THEME_NAMES.LIGHT ? THEME_NAMES.DARK : THEME_NAMES.LIGHT,
     );
   };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", themeName);
+  }, [themeName]);
 
   return (
     <ThemeContext.Provider

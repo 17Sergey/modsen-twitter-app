@@ -1,4 +1,8 @@
+"use client";
+
+import Link from "next/link";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import styles from "./SignUpForm.module.scss";
 
 interface IFormInput {
   name: string;
@@ -26,8 +30,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+      <h2 className={styles.heading}>Create an account</h2>
+
+      <div className={styles.inputGroup}>
         <label>Name</label>
         <Controller
           name="name"
@@ -35,7 +41,8 @@ const SignUpForm = () => {
           render={({ field }) => <input {...field} type="text" />}
         />
       </div>
-      <div>
+
+      <div className={styles.inputGroup}>
         <label>Phone number</label>
         <Controller
           name="phoneNumber"
@@ -43,7 +50,8 @@ const SignUpForm = () => {
           render={({ field }) => <input {...field} type="tel" />}
         />
       </div>
-      <div>
+
+      <div className={styles.inputGroup}>
         <label>Email</label>
         <Controller
           name="email"
@@ -51,7 +59,8 @@ const SignUpForm = () => {
           render={({ field }) => <input {...field} type="email" />}
         />
       </div>
-      <div>
+
+      <div className={styles.inputGroup}>
         <label>Password</label>
         <Controller
           name="password"
@@ -59,7 +68,8 @@ const SignUpForm = () => {
           render={({ field }) => <input {...field} type="password" />}
         />
       </div>
-      <div>
+
+      <div className={styles.inputGroup}>
         <label>Confirm password</label>
         <Controller
           name="confirmPassword"
@@ -67,14 +77,15 @@ const SignUpForm = () => {
           render={({ field }) => <input {...field} type="password" />}
         />
       </div>
-      <div>
+
+      <div className={styles.inputGroup}>
         <label>Date of birth</label>
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Controller
             name="birthDate.month"
             control={control}
             render={({ field }) => (
-              <select {...field}>
+              <select {...field} style={{ flex: 1, marginRight: "5px" }}>
                 <option value="">Month</option>
                 {[
                   "January",
@@ -107,6 +118,7 @@ const SignUpForm = () => {
                 placeholder="Day"
                 min="1"
                 max="31"
+                style={{ flex: 1, marginRight: "5px" }}
               />
             )}
           />
@@ -120,12 +132,19 @@ const SignUpForm = () => {
                 placeholder="Year"
                 min="1900"
                 max={new Date().getFullYear()}
+                style={{ flex: 1 }}
               />
             )}
           />
         </div>
       </div>
-      <button type="submit">Next</button>
+
+      <button type="submit" className={styles.submitButton}>
+        Next
+      </button>
+      <div className={styles.link}>
+        <Link href={"/login"}>Go to logins</Link>
+      </div>
     </form>
   );
 };
