@@ -1,8 +1,7 @@
 "use client";
 
 import { PROTECTED_ROUTES, ROUTES } from "@/shared/constants/constants";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { FC, PropsWithChildren, useEffect } from "react";
 import { useAuth } from "../AuthProvider/useAuth";
 
@@ -26,24 +25,3 @@ export const ProtectedRoutesProvider: FC<PropsWithChildren> = ({
 
   return <>{children}</>;
 };
-
-// export const withAuth = (WrappedComponent: FC) => {
-//   // eslint-disable-next-line react/display-name
-//   return (props: JSX.IntrinsicAttributes) => {
-//     const router = useRouter();
-//     const { user } = useAuth();
-//     const isAuthenticated = !!user;
-
-//     useEffect(() => {
-//       if (!isAuthenticated) {
-//         router.replace(ROUTES.ENTRY);
-//       }
-//     }, [isAuthenticated, router]);
-
-//     if (!isAuthenticated) {
-//       return null; // Пока выполняется редирект, ничего не рендерим
-//     }
-
-//     return <WrappedComponent {...props} />;
-//   };
-// };

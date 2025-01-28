@@ -12,24 +12,20 @@ import messagesIcon from "@/shared/assets/sidebar/messages.svg";
 import moreIcon from "@/shared/assets/sidebar/more.svg";
 import notificationsIcon from "@/shared/assets/sidebar/notifications.svg";
 import profileIcon from "@/shared/assets/sidebar/profile.svg";
-import { ROUTES } from "@/shared/constants/constants";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 // const SIDEBAR_ITEMS = [{ label: "Home", icon: homeIcon }];
 
 export const Sidebar = () => {
   const { user, setCurrentUser } = useAuth();
-  const router = useRouter();
 
   const { mutate } = useMutation({
     mutationFn: authAPI.logout,
     onSuccess: () => {
       toast.success("Logged out successfully");
       setCurrentUser(null);
-      router.push(ROUTES.ENTRY);
     },
     onError: (error) => {
       console.error(error);

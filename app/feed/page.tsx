@@ -2,31 +2,29 @@
 
 import Sidebar from "@/widgets/Sidebar";
 
-const withAuth = (WrappedComponent: FC) => {
-  // eslint-disable-next-line react/display-name
-  return (props: JSX.IntrinsicAttributes) => {
-    const router = useRouter();
-    const { user } = useAuth();
-    const isAuthenticated = !!user;
+// const withAuth = (WrappedComponent: FC) => {
+//   // eslint-disable-next-line react/display-name
+//   return (props: JSX.IntrinsicAttributes) => {
+//     // const router = useRouter();
+//     const { user } = useAuth();
+//     const isAuthenticated = !!user;
 
-    useEffect(() => {
-      if (!isAuthenticated) {
-        router.replace(ROUTES.ENTRY);
-      }
-    }, [isAuthenticated, router]);
+//     // console.log(router);
 
-    if (!isAuthenticated) {
-      return null; // Пока выполняется редирект, ничего не рендерим
-    }
+//     useEffect(() => {
+//       if (!isAuthenticated) {
+//         // router.replace(ROUTES.ENTRY);
+//         window.location.pathname = ROUTES.ENTRY;
+//       }
+//     }, [isAuthenticated]);
 
-    return <WrappedComponent {...props} />;
-  };
-};
+//     if (!isAuthenticated) {
+//       return null; // Пока выполняется редирект, ничего не рендерим
+//     }
 
-import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import { ROUTES } from "@/shared/constants/constants";
-import { useRouter } from "next/router";
-import { FC, JSX, useEffect } from "react";
+//     return <WrappedComponent {...props} />;
+//   };
+// };
 
 // const ProtectedRoutesProvider: FC<PropsWithChildren> = ({ children }) => {
 //   const { user } = useAuth();
@@ -60,6 +58,6 @@ const FeedPage = () => {
   );
 };
 
-// export default FeedPage;
+export default FeedPage;
 
-export default withAuth(FeedPage);
+// export default withAuth(FeedPage);
