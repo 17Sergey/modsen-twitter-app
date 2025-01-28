@@ -21,7 +21,7 @@ export const AuthControls = () => {
       if (user) {
         toast.success("Logged in successfully");
         setCurrentUser(user);
-        router.push(ROUTES.FEED);
+        router.replace(ROUTES.FEED);
       }
     },
     onError: (error) => {

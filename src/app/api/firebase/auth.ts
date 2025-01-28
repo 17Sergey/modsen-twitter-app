@@ -38,25 +38,6 @@ export const signIn = async (email: string, password: string) => {
   return { result, error };
 };
 
-export const signInWithGoogle = async () => {
-  // try {
-  //   const result = await signInWithPopup(auth, googleProvider);
-  //   const credential = GoogleAuthProvider.credentialFromResult(result);
-  //   const token = credential?.accessToken;
-  //   const user = result.user;
-  //   console.log(`Func: ${auth.currentUser}`);
-  // } catch (error) {
-  //   if (error instanceof FirebaseError) {
-  //     const errorCode = error.code;
-  //     const errorMessage = error.message;
-  //     // The email of the user's account used.
-  //     const email = error.customData?.email;
-  //     // The AuthCredential type that was used.
-  //     const credential = GoogleAuthProvider.credentialFromError(error);
-  //   }
-  // }
-};
-
 // const usersCollection = collection(db, "users");
 // const users = await getDocs(usersCollection);
 
@@ -71,11 +52,3 @@ export const login = async (email: string, password: string) => {
 
 export const signup = async (email: string, password: string) =>
   await createUserWithEmailAndPassword(auth, email, password);
-
-// onAuthStateChanged(auth, (user) => {
-//   if (user !== null) {
-//     console.log("Logged in");
-//   } else {
-//     console.log("No user");
-//   }
-// });

@@ -15,11 +15,17 @@ export const ProtectedRoutesProvider: FC<PropsWithChildren> = ({
   const isAuthenticated = !!user;
   const isProtectedRoute = pathname && PROTECTED_ROUTES.includes(pathname);
 
+  // console.log(user, isAuthenticated, isProtectedRoute);
+
   useEffect(() => {
     if (!isAuthenticated && isProtectedRoute) {
       router.replace(ROUTES.ENTRY);
     }
   }, [router, isAuthenticated, isProtectedRoute]);
+
+  useEffect(() => {
+    console.log(`isAuth: ${isAuthenticated}`);
+  }, [isAuthenticated]);
 
   if (!isAuthenticated && isProtectedRoute) return null;
 
