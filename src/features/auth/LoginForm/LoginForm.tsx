@@ -3,12 +3,8 @@
 import { ROUTES } from "@/shared/constants/constants";
 import { loginValidation } from "@/shared/utils/loginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FirebaseError } from "firebase/app";
-import { AuthErrorCodes } from "firebase/auth";
 import Link from "next/link";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { login } from "../../../../firebase";
 import styles from "./LoginForm.module.scss";
 
 interface ILoginInput {
@@ -25,21 +21,21 @@ export const LoginForm = () => {
     resolver: yupResolver(loginValidation),
   });
 
-  const onSubmit: SubmitHandler<ILoginInput> = async (data) => {
-    console.log(data);
-    try {
-      await login(data.phoneNumberOrEmail, data.password);
-      toast("Logged in successfully");
-    } catch (error: unknown) {
-      if (
-        error instanceof FirebaseError &&
-        error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS
-      ) {
-        toast("Invalid credentials");
-      } else {
-        toast("Unknown error");
-      }
-    }
+  const onSubmit: SubmitHandler<ILoginInput> = async () => {
+    // console.log(data);
+    // try {
+    //   await login(data.phoneNumberOrEmail, data.password);
+    //   toast("Logged in successfully");
+    // } catch (error: unknown) {
+    //   if (
+    //     error instanceof FirebaseError &&
+    //     error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS
+    //   ) {
+    //     toast("Invalid credentials");
+    //   } else {
+    //     toast("Unknown error");
+    //   }
+    // }
   };
 
   return (

@@ -5,7 +5,11 @@ export const THEME_NAMES = {
 };
 
 export const ROUTES = {
-  HOME: "/",
+  ENTRY: "/",
   LOGIN: "/login",
   SIGNUP: "/signup",
+  FEED: "/feed",
+  PROFILE: "/profile",
 };
+
+export const PROTECTED_ROUTES = [ROUTES.FEED, ROUTES.PROFILE];

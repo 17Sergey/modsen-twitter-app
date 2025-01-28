@@ -1,7 +1,7 @@
 "use client";
 
-import WelcomePage from "@/pages/WelcomePage";
+import EntryPage from "@/pages/EntryPage";
 
-export default function HomePage() {
-  return <WelcomePage />;
+export default function Entry() {
+  return <EntryPage />;
 }
