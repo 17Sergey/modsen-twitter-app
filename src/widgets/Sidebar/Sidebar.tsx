@@ -1,34 +1,26 @@
 "use client";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import styles from "./Sidebar.module.scss";
-
 import { authAPI } from "@/pages/EntryPage/api/auth";
-import bookmarksIcon from "@/shared/assets/sidebar/bookmarks.svg";
-import exploreIcon from "@/shared/assets/sidebar/explore.svg";
-import homeIcon from "@/shared/assets/sidebar/home.svg";
-import listsIcon from "@/shared/assets/sidebar/lists.svg";
-import messagesIcon from "@/shared/assets/sidebar/messages.svg";
-import moreIcon from "@/shared/assets/sidebar/more.svg";
-import notificationsIcon from "@/shared/assets/sidebar/notifications.svg";
+
 import profileIcon from "@/shared/assets/sidebar/profile.svg";
 import { ROUTES } from "@/shared/constants/constants";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
-// const SIDEBAR_ITEMS = [{ label: "Home", icon: homeIcon }];
+import styles from "./Sidebar.module.scss";
+import SidebarItem from "./SidebarItem";
+import { SIDEBAR_ITEMS } from "./const";
 
 export const Sidebar = () => {
-  const { user, setCurrentUser } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   const { mutate } = useMutation({
     mutationFn: authAPI.logout,
     onSuccess: () => {
       toast.success("Logged out successfully");
-      setCurrentUser(null);
       router.push(ROUTES.ENTRY);
     },
     onError: (error) => {
@@ -44,14 +36,9 @@ export const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarItems}>
-        <SidebarItem icon={homeIcon} label="Home" />
-        <SidebarItem icon={exploreIcon} label="Explore" />
-        <SidebarItem icon={notificationsIcon} label="Notifications" />
-        <SidebarItem icon={messagesIcon} label="Messages" />
-        <SidebarItem icon={bookmarksIcon} label="Bookmarks" />
-        <SidebarItem icon={listsIcon} label="Lists" />
-        <SidebarItem icon={profileIcon} label="Profile" />
-        <SidebarItem icon={moreIcon} label="More" />
+        {SIDEBAR_ITEMS.map(({ label, icon, route }) => (
+          <SidebarItem key={label} icon={icon} label={label} route={route} />
+        ))}
       </div>
       <button className={styles.tweetButton}>Tweet</button>
       <div className={styles.userProfile}>
@@ -60,9 +47,9 @@ export const Sidebar = () => {
           alt="Profile"
           className={styles.profileImage}
         />
-        <div onClick={() => router.push(ROUTES.PROFILE)}>
-          <p className={styles.username}>Bobur</p>
-          <p className={styles.handle}>@{user?.email}</p>
+        <div>
+          <p className={styles.username}>{user?.fullName}</p>
+          <p className={styles.handle}>@{user?.username}</p>
         </div>
       </div>
       <button className={styles.logoutButton} onClick={handleLogout}>
@@ -71,10 +58,3 @@ export const Sidebar = () => {
     </div>
   );
 };
-
-const SidebarItem = ({ icon, label }: { icon: string; label: string }) => (
-  <div className={styles.sidebarItem}>
-    <Image src={icon} alt={`${label} icon`} className={styles.icon} />
-    <span>{label}</span>
-  </div>
-);

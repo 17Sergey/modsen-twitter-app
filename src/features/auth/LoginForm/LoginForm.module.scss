@@ -1,4 +1,10 @@
 .formContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
@@ -47,6 +53,10 @@
   &:hover {
     background-color: #1a91da;
   }
+}
+
+.google {
+  margin: 0.5rem 0;
 }
 
 .link {

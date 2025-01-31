@@ -15,9 +15,11 @@ export const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
   if (isProtectedRoute)
     return (
       <div className={styles.wrapper}>
-        <Sidebar />
-        {children}
-        <div>Aside</div>
+        <nav>
+          <Sidebar />
+        </nav>
+        <main className={styles.main}>{children}</main>
+        <aside className={styles.aside}>Aside</aside>
       </div>
     );
 

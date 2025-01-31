@@ -15,11 +15,13 @@ export const App: FC<PropsWithChildren> = ({ children }) => {
       <QueryProvider>
         <ToastsProvider>
           <AuthProvider>
+            {/* <UnauthorizedRoutesProvider> */}
             <ProtectedRoutesProvider>
               <LayoutProvider>
                 <>{children}</>
               </LayoutProvider>
             </ProtectedRoutesProvider>
+            {/* </UnauthorizedRoutesProvider> */}
           </AuthProvider>
         </ToastsProvider>
       </QueryProvider>

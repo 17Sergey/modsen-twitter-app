@@ -1,8 +1,9 @@
-// app/api/auth/loginWithGoogle.js
 import { getUserFriendlyMessage } from "@/app/api/firebase/errorCodes";
-import { auth, googleProvider } from "@/app/api/firebase/firebase";
+import { auth, googleProvider } from "@/app/api/firebase";
 import { FirebaseError } from "firebase/app";
 import { signInWithPopup } from "firebase/auth";
+import { generateTokenAndSetCookie } from "@/entities/user/api/generateTokenAndSetCookie";
+import { userRepository } from "@/entities/user/api/UserRepository";
 
 export const loginWithGoogle = async () => {
   try {
@@ -11,23 +12,33 @@ export const loginWithGoogle = async () => {
 
     if (!user) throw new Error("User was not found in Google. Try later");
 
-    const token = await user.getIdToken();
+    if (!user.email)
+      throw new Error(
+        "Google user doesn't have an email. Please add email to google.",
+      );
 
-    await fetch("/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ token }),
-      credentials: "include",
-    });
+    const existingUser = (await userRepository.getUserByEmail(
+      user.email,
+    )) as UserWithId;
 
-    return user;
+    if (existingUser) {
+      await generateTokenAndSetCookie(existingUser);
+
+      return {
+        user: existingUser,
+        isAuthenticated: true,
+      };
+    }
+
+    return {
+      user: user,
+      isAuthenticated: false,
+    };
   } catch (error) {
     if (error instanceof FirebaseError) {
-      const errorCode = error.code;
-      const message = getUserFriendlyMessage(errorCode);
+      const message = getUserFriendlyMessage(error.code);
       throw new Error(message);
     }
+    if (error instanceof Error) throw new Error(error.message);
   }
 };

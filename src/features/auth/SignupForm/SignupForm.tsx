@@ -1,188 +1,82 @@
-"use client";
-
+import { authAPI } from "@/pages/EntryPage/api/auth";
+import InputField from "@/shared/components/InputField";
 import { ROUTES } from "@/shared/constants/constants";
 import { signupValidation } from "@/shared/utils/signupValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { inputFields, ISignupInput, MIN_USER_AGE } from "./constants";
 import styles from "./SignupForm.module.scss";
-
-interface IFormInput {
-  name: string;
-  phoneNumber: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  birthDate: { month: string; day: number; year: number };
-}
+import { renderDayOptions } from "./utils/renderDayOptions";
+import { renderMonthOptions } from "./utils/renderMonthOptions";
+import { renderYearOptions } from "./utils/renderYearOptions";
 
 export const SignupForm = () => {
   const {
-    control,
+    register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>({
+  } = useForm<ISignupInput>({
     defaultValues: {
-      name: "",
-      phoneNumber: "",
+      fullName: "",
+      username: "",
       email: "",
       password: "",
       confirmPassword: "",
-      birthDate: { month: "", day: 1, year: 1900 },
+      birthDate: {
+        month: "January",
+        day: 1,
+        year: new Date().getFullYear() - MIN_USER_AGE,
+      },
     },
     resolver: yupResolver(signupValidation),
   });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
+  const router = useRouter();
+
+  const { mutate: signupMutation } = useMutation({
+    mutationFn: authAPI.signup,
+    onSuccess: (user: UserWithId | undefined) => {
+      console.log(user);
+
+      toast.success("Signed up successfully!");
+      router.replace(ROUTES.FEED);
+    },
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+
+  const onSubmit: SubmitHandler<ISignupInput> = (data) => {
+    signupMutation(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
       <h2 className={styles.heading}>Create an account</h2>
 
-      <div className={styles.inputGroup}>
-        <Controller
-          name="name"
-          control={control}
-          rules={{ required: "Name is required" }}
-          render={({ field }) => (
-            <div className={styles.inputContainer}>
-              <input {...field} type="text" placeholder="Name" />
-              {errors.name && (
-                <p className={styles.error}>{errors.name.message}</p>
-              )}
-            </div>
-          )}
+      {inputFields.map((field) => (
+        <InputField
+          key={field.name}
+          type={field.type}
+          placeholder={field.placeholder}
+          register={register}
+          name={field.name}
+          error={errors[field.name]?.message}
         />
-      </div>
+      ))}
 
       <div className={styles.inputGroup}>
-        <Controller
-          name="phoneNumber"
-          control={control}
-          rules={{ required: "Phone number is required" }}
-          render={({ field }) => (
-            <div className={styles.inputContainer}>
-              <input {...field} type="tel" placeholder="Phone number" />
-              {errors.phoneNumber && (
-                <p className={styles.error}>{errors.phoneNumber.message}</p>
-              )}
-            </div>
-          )}
-        />
-      </div>
-
-      <div className={styles.inputGroup}>
-        <Controller
-          name="email"
-          control={control}
-          rules={{ required: "Email is required" }}
-          render={({ field }) => (
-            <div className={styles.inputContainer}>
-              <input {...field} type="email" placeholder="Email" />
-              {errors.email && (
-                <p className={styles.error}>{errors.email.message}</p>
-              )}
-            </div>
-          )}
-        />
-      </div>
-
-      <div className={styles.inputGroup}>
-        <Controller
-          name="password"
-          control={control}
-          rules={{ required: "Password is required" }}
-          render={({ field }) => (
-            <div className={styles.inputContainer}>
-              <input {...field} type="password" placeholder="Password" />
-              {errors.password && (
-                <p className={styles.error}>{errors.password.message}</p>
-              )}
-            </div>
-          )}
-        />
-      </div>
-
-      <div className={styles.inputGroup}>
-        <Controller
-          name="confirmPassword"
-          control={control}
-          rules={{ required: "Confirm password is required" }}
-          render={({ field }) => (
-            <div className={styles.inputContainer}>
-              <input
-                {...field}
-                type="password"
-                placeholder="Confirm password"
-              />
-              {errors.confirmPassword && (
-                <p className={styles.error}>{errors.confirmPassword.message}</p>
-              )}
-            </div>
-          )}
-        />
-      </div>
-
-      <div className={styles.inputGroup}>
-        <label>Date of birth</label>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Controller
-            name="birthDate.month"
-            control={control}
-            render={({ field }) => (
-              <select {...field} style={{ flex: 1, marginRight: "5px" }}>
-                {[
-                  "January",
-                  "February",
-                  "March",
-                  "April",
-                  "May",
-                  "June",
-                  "July",
-                  "August",
-                  "September",
-                  "October",
-                  "November",
-                  "December",
-                ].map((month) => (
-                  <option key={month} value={month}>
-                    {month}
-                  </option>
-                ))}
-              </select>
-            )}
-          />
-          <Controller
-            name="birthDate.day"
-            control={control}
-            render={({ field }) => (
-              <select {...field} style={{ flex: 1, marginRight: "5px" }}>
-                {Array.from({ length: 31 }, (_, i) => i + 1).map((day) => (
-                  <option key={day} value={day}>
-                    {day}
-                  </option>
-                ))}
-              </select>
-            )}
-          />
-          <Controller
-            name="birthDate.year"
-            control={control}
-            render={({ field }) => (
-              <select {...field} style={{ flex: 1 }}>
-                {Array.from(
-                  { length: new Date().getFullYear() - 1900 + 1 },
-                  (_, i) => 1900 + i,
-                ).map((year) => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-            )}
-          />
+        <label>Date of Birth</label>
+        <div className={styles.dateContainer}>
+          <select {...register("birthDate.month")}>
+            {renderMonthOptions()}
+          </select>
+          <select {...register("birthDate.day")}>{renderDayOptions()}</select>
+          <select {...register("birthDate.year")}>{renderYearOptions()}</select>
         </div>
       </div>
 

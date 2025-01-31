@@ -13,24 +13,6 @@
   flex-direction: column;
 }
 
-.sidebarItem {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #f5f8fa;
-  }
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
 .tweetButton {
   background-color: #1da1f2;
   color: white;

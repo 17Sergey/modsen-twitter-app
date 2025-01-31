@@ -17,38 +17,6 @@
   // margin-bottom: 10px;
 }
 
-.error {
-  position: absolute;
-  color: var(--error-color);
-  font-size: 0.875rem;
-}
-
-.inputGroup {
-  margin-bottom: 15px;
-  text-align: left;
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  input,
-  select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    // margin-bottom: 10px;
-
-    &:focus {
-      border-color: #1da1f2;
-      outline: none;
-    }
-  }
-}
-
 .submitButton {
   background-color: #1da1f2;
   color: white;
@@ -71,4 +39,17 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+.dateContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+
+  margin: 1rem 0;
+}
+
+.dateContainer select {
+  flex: 1;
+  height: 40px;
 }

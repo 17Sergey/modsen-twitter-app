@@ -1,4 +1,3 @@
-import { User } from "firebase/auth";
 import { createContext } from "react";
 
 export type ContextType =
@@ -8,6 +7,6 @@ export type ContextType =
     }
   | undefined;
 
-export type UserType = User | null;
+export type UserType = UserWithId | null;
 
 export const AuthContext = createContext<ContextType>(undefined);

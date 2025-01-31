@@ -1,47 +1,81 @@
+// "use client";
+
+// import { getMe } from "@/entities/user/api/getMe";
+// import { ROUTES, UNAUTHORIZED_ROUTES } from "@/shared/constants/constants";
+// import { usePathname, useRouter } from "next/navigation";
+// import { FC, PropsWithChildren, useEffect, useState } from "react";
+// import { AuthContext, UserType } from "./context";
+
+// const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
+//   const [user, setUser] = useState<UserType>(null);
+
+//   console.log("Auth provider");
+
+//   const router = useRouter();
+//   const pathname = usePathname();
+
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       const user = await getMe();
+
+//       if (!user) return;
+
+//       setUser(user);
+//       if (UNAUTHORIZED_ROUTES.includes(pathname || "")) {
+//         debugger;
+//         router.replace(ROUTES.FEED);
+//       }
+//     };
+
+//     fetchUser();
+//   }, [router, pathname]);
+
+//   const setCurrentUser = (user: UserType) => {
+//     setUser(user);
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ user, setCurrentUser }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+// export default AuthProvider;
+
 "use client";
 
-import { auth } from "@/app/api/firebase/firebase";
-import { ROUTES } from "@/shared/constants/constants";
-import { useRouter } from "next/navigation";
-import { FC, PropsWithChildren, useEffect, useState } from "react";
+import { getMe } from "@/pages/EntryPage/api/auth/getMe";
+import { useQuery } from "@tanstack/react-query";
+import { FC, PropsWithChildren } from "react";
 import { AuthContext, UserType } from "./context";
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [user, setUser] = useState<UserType>(null);
+  // const router = useRouter();
+  // const pathname = usePathname();
 
-  console.log("Auth provider");
+  const { data: fetchedUser, isLoading } = useQuery<UserType>({
+    queryKey: ["user"],
+    queryFn: getMe,
+    retry: false,
+    // onSuccess: (fetchedUser) => {
+    //   if (fetchedUser && UNAUTHORIZED_ROUTES.includes(pathname || "")) {
+    //     console.log("Redirecting to feed from unauthorized route");
+    //     router.replace(ROUTES.FEED);
+    //   }
+    // },
+    // onError: (error) => {
+    //   console.error("Failed to fetch user:", error);
+    // },
+  });
 
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await fetch("/api/auth/checkToken", {
-        method: "GET",
-        credentials: "include", // Включить куки в запрос
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        // setUser(data.user);
-        console.log(`Resp data: ${data.user}`);
-        setUser(auth.currentUser);
-        router.replace(ROUTES.FEED);
-      } else {
-        setUser(null);
-      }
-    };
-
-    fetchUser();
-
-    // Чистка подписки
-    return () => {
-      // Здесь можно добавить логику очищения, если нужно
-    };
-  }, [router]);
-
-  const setCurrentUser = (user: UserType) => {
-    setUser(user);
+  const setCurrentUser = (newUser: UserType) => {
+    console.log(newUser);
   };
+
+  const user = fetchedUser ? fetchedUser : null;
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <AuthContext.Provider value={{ user, setCurrentUser }}>

@@ -1,11 +1,17 @@
 // utils/validation.ts
+import { MIN_USER_AGE } from "@/features/auth/SignupForm/constants";
 import * as Yup from "yup";
 
+const USERNAME_REGEX = /^[a-zA-Z0-9_]{3,20}$/;
+
 export const signupValidation = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  phoneNumber: Yup.string()
+  fullName: Yup.string().required("Name is required"),
+  username: Yup.string()
     .required("Phone number is required")
-    .matches(/^[0-9]+$/, "Phone number must be digits"),
+    .matches(
+      USERNAME_REGEX,
+      "Username cannot contain spaces and other specific symbols",
+    ),
   email: Yup.string().required("Email is required").email("Email is not valid"),
   password: Yup.string()
     .required("Password is required")
@@ -21,7 +27,14 @@ export const signupValidation = Yup.object().shape({
       .max(31, "Day must be at most 31"),
     year: Yup.number()
       .required("Year is required")
-      .min(1900, "Year must be at least 1900")
-      .max(new Date().getFullYear(), "Year cannot be in the future"),
+      .test("age", "You must be at least 12 years old", function (value) {
+        const { month, day } = this.parent;
+        const birthDate = new Date(`${month} ${day}, ${value}`);
+        const age = new Date().getFullYear() - birthDate.getFullYear();
+        return (
+          age >= MIN_USER_AGE ||
+          (age === MIN_USER_AGE - 1 && new Date() < birthDate)
+        );
+      }),
   }),
 });

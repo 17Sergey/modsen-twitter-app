@@ -7,7 +7,7 @@ import {
   signInWithEmailAndPassword,
   // signInWithPopup,
 } from "firebase/auth";
-import { app } from "./firebase";
+import { app } from ".";
 // import { app, db, googleProvider } from "./firebase";
 // import { FirebaseError } from "firebase/app";
 // import { doc, getDoc, setDoc } from "firebase/firestore";
