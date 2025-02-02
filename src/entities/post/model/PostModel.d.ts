@@ -16,3 +16,7 @@ interface PostModel {
 
   updatedAt?: number;
 }
+
+interface PostWithId extends PostModel {
+  id: string;
+}

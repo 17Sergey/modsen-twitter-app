@@ -41,7 +41,7 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
     resolver: yupResolver(editProfileValidation),
   });
 
-  const { mutate: editMutation } = useMutation({
+  const { mutate: editMutation, isPending } = useMutation({
     mutationFn: userAPI.editProfile,
     onSuccess: (message: string | undefined) => {
       toast.success(message ? message : "Signed up successfully!");
@@ -99,10 +99,10 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
 
         <button
           type="submit"
-          disabled={isSubmitting}
+          disabled={isSubmitting || isPending}
           className={styles.saveButton}
         >
-          <span>{isSubmitting ? "Saving..." : "Save Changes"}</span>
+          <span>{isPending ? "Saving..." : "Save Changes"}</span>
         </button>
       </form>
     </Modal>

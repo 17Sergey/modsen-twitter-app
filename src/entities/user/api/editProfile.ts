@@ -1,4 +1,4 @@
-import { EditFormData } from "@/pages/ProfilePage/EditProfileModal/EditProfileModal";
+import { EditFormData } from "@/features/profile/EditProfileModal/EditProfileModal";
 import { userRepository } from "./UserRepository";
 
 interface EditProfileParams {

@@ -22,3 +22,7 @@ interface UserModel {
 
   updatedAt?: number;
 }
+
+interface UserWithId extends UserModel {
+  id: string;
+}

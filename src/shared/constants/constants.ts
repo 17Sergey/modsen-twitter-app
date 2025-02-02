@@ -37,4 +37,6 @@ export const JWT_SECRET = process.env.JWT_SECRET || "";
 
 export const QUERY_KEYS = {
   USER_AUTH: "getMe",
+  USER_PROFILE: "userProfile",
+  POSTS: "posts",
 };
