@@ -23,7 +23,10 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
     retry: false,
   });
 
+  // debugger;
+
   const user = (fetchedUser || currentUser) as UserWithId;
+  const isCurrentUser = user.username === currentUser?.username;
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -32,7 +35,7 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
       {user && (
         <>
           <UserProfile user={user} />
-          {user.username === currentUser?.username && <AddPost />}
+          {isCurrentUser && <AddPost />}
           <UserPosts username={user.username} />
         </>
       )}

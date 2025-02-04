@@ -6,3 +6,8 @@ type PostsWithUser = {
   user: UserWithId;
   posts: PostWithId[];
 };
+
+type CommentWithUser = {
+  user: UserWithId;
+  comment: CommentWithId;
+};

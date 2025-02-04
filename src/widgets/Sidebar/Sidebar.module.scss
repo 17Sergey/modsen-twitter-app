@@ -28,6 +28,9 @@
   }
 }
 
+.logoutButton {
+}
+
 .userProfile {
   display: flex;
   align-items: center;
@@ -50,14 +53,12 @@
 }
 
 .logoutButton {
-  margin-top: 10px;
-  background: none;
+  background-color: var(--neutral-border);
   border: none;
-  color: #1da1f2;
+  border-radius: 25px;
+  padding: 10px 20px;
   cursor: pointer;
-  transition: color 0.2s;
 
-  &:hover {
-    color: #1a91da;
-  }
+  margin-top: 10px;
+  color: var(--secondary-color);
 }

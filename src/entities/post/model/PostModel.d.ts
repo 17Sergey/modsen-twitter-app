@@ -1,9 +1,3 @@
-interface CommentModel {
-  user: string;
-  text: string;
-  img?: string;
-}
-
 interface PostModel {
   user: string;
   text: string;
@@ -12,7 +6,7 @@ interface PostModel {
   img?: string;
 
   likes?: string[];
-  comments?: CommentModel[];
+  comments?: string[];
 
   updatedAt?: number;
 }

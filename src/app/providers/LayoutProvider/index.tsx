@@ -1,10 +1,10 @@
 "use client";
 
 import { PROTECTED_ROUTES } from "@/shared/constants/constants";
+import Aside from "@/widgets/aside/components/Aside";
 import Sidebar from "@/widgets/Sidebar";
 import { usePathname } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
-
 import styles from "./LayoutProvider.module.scss";
 
 export const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -19,7 +19,9 @@ export const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
           <Sidebar />
         </nav>
         <main className={styles.main}>{children}</main>
-        <aside className={styles.aside}>Aside</aside>
+        <aside className={styles.aside}>
+          <Aside />
+        </aside>
       </div>
     );
 

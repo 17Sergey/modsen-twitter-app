@@ -1,4 +1,4 @@
-import { Post } from "@/features/post/post/Post";
+import Post from "@/features/post/post/components/Post";
 import { FC } from "react";
 
 interface PostsProps {

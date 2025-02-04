@@ -1,5 +1,3 @@
-// components/Modal.tsx
-
 import { useClickOutside } from "@/shared/hooks/useClickOutside";
 import { FC, PropsWithChildren } from "react";
 import styles from "./Modal.module.scss";

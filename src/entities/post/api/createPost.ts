@@ -1,3 +1,4 @@
+import { imagesAPI } from "@/shared/api/images";
 import { postRepository } from "./PostRepository";
 
 interface CreatePostParams {
@@ -12,9 +13,11 @@ export const createPost = async ({ userId, text, img }: CreatePostParams) => {
     text,
     createdAt: Date.now(),
   };
-  debugger;
 
-  if (img) newPost.img = img;
+  if (img) {
+    const imgUrl = (await imagesAPI.uploadImage(img)) as string;
+    newPost.img = imgUrl;
+  }
 
   await postRepository.create(newPost);
 };

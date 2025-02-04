@@ -3,8 +3,11 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { authAPI } from "@/pages/EntryPage/api/auth";
 
+import AddPost from "@/features/post/addPost/components/AddPost";
 import profileIcon from "@/shared/assets/sidebar/profile.svg";
+import Modal from "@/shared/components/Modal";
 import { ROUTES } from "@/shared/constants/constants";
+import { useModal } from "@/shared/hooks/useModal";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -16,6 +19,12 @@ import { SIDEBAR_ITEMS } from "./const";
 export const Sidebar = () => {
   const { user } = useAuth();
   const router = useRouter();
+
+  const {
+    isOpen: isAddPostModalOpen,
+    openModal: openAddPostModal,
+    closeModal: closeAddPostModal,
+  } = useModal();
 
   const { mutate } = useMutation({
     mutationFn: authAPI.logout,
@@ -40,7 +49,14 @@ export const Sidebar = () => {
           <SidebarItem key={label} icon={icon} label={label} route={route} />
         ))}
       </div>
-      <button className={styles.tweetButton}>Tweet</button>
+      <button className={styles.tweetButton} onClick={openAddPostModal}>
+        Tweet
+      </button>
+      {isAddPostModalOpen && (
+        <Modal onClose={closeAddPostModal}>
+          <AddPost onAdd={closeAddPostModal} />
+        </Modal>
+      )}
       <div className={styles.userProfile}>
         <Image
           src={profileIcon}

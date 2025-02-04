@@ -1,8 +1,12 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import EditProfileModal from "@/features/profile/EditProfileModal";
+import FollowUser from "@/features/user/FollowUser";
 import ProfileIcon from "@/shared/assets/sidebar/profile.svg";
+import { QUERY_KEYS } from "@/shared/constants/constants";
+import { useModal } from "@/shared/hooks/useModal";
+import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./UserProfile.module.scss";
@@ -14,14 +18,22 @@ interface UserProfileProps {
 export const UserProfile: FC<UserProfileProps> = ({ user }) => {
   const { user: currentUser } = useAuth();
 
-  const [isEditProfile, setIsEditProfile] = useState(false);
+  // debugger;
 
-  const closeEditModal = () => {
-    setIsEditProfile(false);
-  };
+  const {
+    isOpen: isEditProfile,
+    openModal: openEditModal,
+    closeModal: closeEditModal,
+  } = useModal();
 
-  const openEditModal = () => {
-    setIsEditProfile(true);
+  const isMyProfile = currentUser?.username === user?.username;
+
+  const queryClient = useQueryClient();
+
+  const handleFollowSuccess = () => {
+    queryClient.invalidateQueries({
+      queryKey: [QUERY_KEYS.USER_PROFILE, user.username],
+    });
   };
 
   return (
@@ -40,8 +52,8 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
           <span className={styles.username}>@{user?.username}</span>
           <p className={styles.position}>{user?.email}</p>
           <div className={styles.stats}>
-            <span>{user?.following?.length || 0} Following</span>
             <span>{user?.followers?.length || 0} Followers</span>
+            <span>{user?.following?.length || 0} Following</span>
           </div>
           <div>{user?.bio}</div>
           <div>
@@ -51,13 +63,20 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
               </Link>
             )}
           </div>
-          {currentUser?.username === user?.username && (
+          {isMyProfile && (
             <button className={styles.editProfile} onClick={openEditModal}>
               Edit profile
             </button>
           )}
           {isEditProfile && user && (
             <EditProfileModal user={user} onClose={closeEditModal} />
+          )}
+          {!isMyProfile && (
+            <FollowUser
+              userId={user.id}
+              followers={user.followers}
+              onSuccess={handleFollowSuccess}
+            />
           )}
         </div>
       </div>
