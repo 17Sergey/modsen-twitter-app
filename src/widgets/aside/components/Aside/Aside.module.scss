@@ -1,4 +1,12 @@
 .aside {
   display: flex;
   flex-direction: column;
+
+  margin-top: var(--margin-sm);
+
+  background-color: var(--placeholder);
+  padding: var(--padding-base);
+  overflow-y: auto;
+
+  max-height: 300px;
 }

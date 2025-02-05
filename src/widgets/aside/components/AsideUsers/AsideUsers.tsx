@@ -25,7 +25,7 @@ export const AsideUsers: FC<AsideUsersProps> = ({
       </>
     );
 
-  if (error) return <div>Error loading posts: {error}</div>;
+  if (error) return <div>Error while loading: {error}</div>;
 
   if (users && users.length === 0) return <div>Nothing to suggest yet</div>;
 

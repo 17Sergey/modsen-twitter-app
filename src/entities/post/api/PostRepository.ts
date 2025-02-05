@@ -1,6 +1,6 @@
 import { COLLECTIONS } from "@/app/api/firebase/collections";
 import Repository from "@/shared/utils/Repository";
-import { getCountFromServer, query, where } from "firebase/firestore";
+import { getCountFromServer, getDocs, query, where } from "firebase/firestore";
 
 class PostRepository extends Repository<PostModel> {
   constructor() {
@@ -14,6 +14,21 @@ class PostRepository extends Repository<PostModel> {
     const postsQuery = query(this.collectionRef, where("user", "==", userId));
     const snapshot = await getCountFromServer(postsQuery);
     return snapshot.data().count;
+  }
+  async searchPosts(queryString: string, userId: UserWithId["id"]) {
+    const q = query(this.collectionRef, where("user", "==", userId));
+
+    const snapshot = await getDocs(q);
+    const posts = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })) as PostWithId[];
+
+    const filteredPosts = posts.filter(({ text }) =>
+      text.toLocaleLowerCase().includes(queryString.toLocaleLowerCase()),
+    );
+
+    return filteredPosts;
   }
 }
 

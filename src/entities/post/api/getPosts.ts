@@ -4,12 +4,6 @@ import { postRepository } from "./PostRepository";
 export const getPosts = async (username: UserModel["username"]) => {
   const user = (await userRepository.getUserByUsername(username)) as UserWithId;
 
-  if (!user) {
-    alert(
-      "User was not found, his username: " + typeof username + " " + username,
-    );
-  }
-
   if (!user)
     throw new Error(
       "Failed to fetch posts. User with such username doesn't exist.",

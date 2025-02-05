@@ -10,6 +10,7 @@ export const ROUTES = {
   SIGNUP: "/signup",
   FEED: "/feed",
   PROFILE: "/profile",
+  POSTS: "/posts",
 
   EXPLORE: "/feed",
   NOTIFICATIONS: "/feed",
@@ -19,7 +20,7 @@ export const ROUTES = {
   MORE: "/feed",
 };
 
-export const PROTECTED_ROUTES = [ROUTES.FEED, ROUTES.PROFILE];
+export const PROTECTED_ROUTES = [ROUTES.FEED, ROUTES.PROFILE, ROUTES.POSTS];
 
 export const UNAUTHORIZED_ROUTES = [ROUTES.ENTRY, ROUTES.SIGNUP, ROUTES.LOGIN];
 
@@ -47,4 +48,7 @@ export const QUERY_KEYS = {
   POSTS: "posts",
   COMMENTS: "comments",
   SUGGESTED_USERS: "suggestedUsers",
+  SUGGESTED_POSTS: "suggestedPosts",
+  SEARCHED_USERS: "searchedUsers",
+  SEARCHED_POSTS: "searchedPosts",
 };

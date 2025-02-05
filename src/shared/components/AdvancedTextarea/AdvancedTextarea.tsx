@@ -47,7 +47,6 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
 
   const clearImage = () => {
     setImg(null);
-    onImgChange(null);
 
     if (imgRef.current) {
       imgRef.current.value = "";
@@ -61,13 +60,14 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
   }, [text, onTextChange]);
 
   useEffect(() => {
+    onImgChange(img);
+  }, [img, onImgChange]);
+
+  useEffect(() => {
+    // debugger;
     if (needToReset) {
       reset();
-
-      setImg(null);
-      if (imgRef.current) {
-        imgRef.current.value = "";
-      }
+      clearImage();
     }
   }, [needToReset, reset]);
 

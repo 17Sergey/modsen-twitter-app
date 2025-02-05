@@ -9,6 +9,7 @@
 
 .main {
   flex: 1;
+  flex-grow: 2;
   padding: var(--padding-base);
   background-color: var(--background-color);
   overflow-y: auto;
@@ -16,9 +17,5 @@
 
 .aside {
   flex-shrink: 0;
-  min-width: 300px;
-  max-height: 300px;
-  background-color: var(--background-neutral);
-  padding: var(--padding-base);
-  overflow-y: auto;
+  width: 300px;
 }

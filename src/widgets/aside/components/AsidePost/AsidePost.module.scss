@@ -1,0 +1,20 @@
+.container {
+  margin-bottom: var(--margin-sm);
+  border: 1px solid var(--neutral-border);
+  padding: var(--padding-sm);
+  border-radius: var(--padding-sm);
+
+  background-color: var(--background-color);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.text {
+  margin: var(--margin-sm) 0;
+}
+
+.image {
+  width: 100%;
+}

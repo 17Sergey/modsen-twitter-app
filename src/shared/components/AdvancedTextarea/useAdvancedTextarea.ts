@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useAdvancedTextarea = () => {
   const [text, setText] = useState("");
@@ -16,6 +16,10 @@ export const useAdvancedTextarea = () => {
   const triggerReset = () => {
     setNeedToReset(true);
   };
+
+  useEffect(() => {
+    if (needToReset) setNeedToReset(false);
+  }, [needToReset]);
 
   return {
     text,
