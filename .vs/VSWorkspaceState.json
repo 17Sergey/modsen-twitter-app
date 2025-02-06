@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\entities",
+    "\\src\\entities\\comment",
+    "\\src\\entities\\comment\\api"
+  ],
+  "SelectedNode": "\\src\\entities\\comment\\api\\addComment.ts",
+  "PreviewInSolutionExplorer": false
+}

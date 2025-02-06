@@ -13,10 +13,7 @@ export const getPosts = async (username: UserModel["username"]) => {
     user.id,
   )) as PostWithId[];
 
-  const response = {
-    user,
-    posts,
-  } as PostsWithUser;
+  const postsWithUser = posts.map((post) => ({ post, user })) as PostWithUser[];
 
-  return response;
+  return postsWithUser;
 };

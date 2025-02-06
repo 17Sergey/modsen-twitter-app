@@ -12,21 +12,16 @@ interface UserPostsProps {
 
 export const UserPosts: FC<UserPostsProps> = ({ username }) => {
   const {
-    data: postsData,
+    data: posts,
     isLoading,
     error,
-  } = useQuery<PostsWithUser | undefined>({
+  } = useQuery<PostWithUser[] | undefined>({
     queryKey: [QUERY_KEYS.POSTS, username],
     queryFn: () => postAPI.getPosts(username),
     retry: false,
   });
 
   return (
-    <Posts
-      posts={postsData?.posts}
-      user={postsData?.user}
-      isLoading={isLoading}
-      error={error && error.message}
-    />
+    <Posts posts={posts} isLoading={isLoading} error={error && error.message} />
   );
 };

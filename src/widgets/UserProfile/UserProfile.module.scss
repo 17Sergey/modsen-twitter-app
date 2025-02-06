@@ -14,13 +14,20 @@
   width: 100%;
 }
 
+.coverImage {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .profileImage {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   overflow: hidden;
   margin-right: 20px;
-  position: relative; // для корректного позиционирования изображения
+  position: relative;
 }
 
 .profileInfo {

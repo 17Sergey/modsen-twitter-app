@@ -1,6 +1,6 @@
 import { ComponentProps, FC } from "react";
 
-import ProfileIcon from "@/shared/assets/sidebar/profile.svg";
+import ProfileImg from "@/shared/assets/images/avatar.png";
 import Image from "next/image";
 import styles from "./UserImg.module.scss";
 
@@ -15,7 +15,7 @@ export const UserImg: FC<ComponentProps<"img">> = ({
       {...props}
       width={16}
       height={16}
-      src={src || ProfileIcon}
+      src={src || ProfileImg}
       className={`${styles.img} ${className}`}
       alt={alt || "User profile"}
     />

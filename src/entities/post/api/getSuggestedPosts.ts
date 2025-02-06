@@ -24,5 +24,5 @@ export const getSuggestedPosts = async ({
   return {
     user,
     posts: finalPosts,
-  } as PostsWithUser;
+  } as PostsWithSameUser;
 };

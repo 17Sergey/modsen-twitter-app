@@ -7,9 +7,14 @@ type PostWithUser = {
   post: PostWithId;
 };
 
-type PostsWithUser = {
+type PostsWithSameUser = {
   user: UserWithId;
   posts: PostWithId[];
+};
+
+type PaginationPosts = {
+  posts: PostWithUser[];
+  hasMore?: boolean;
 };
 
 type CommentWithUser = {

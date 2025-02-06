@@ -10,20 +10,20 @@ import { FC } from "react";
 import UserPosts from "./UserPosts";
 
 interface ProfilePageProps {
-  username: string;
+  username?: string;
 }
 
 export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
   const { user: currentUser } = useAuth();
 
+  const currentUsername = username || currentUser?.username || "";
+
   const { data: fetchedUser, isLoading } = useQuery<UserModel | undefined>({
-    queryKey: [QUERY_KEYS.USER_PROFILE, username],
-    queryFn: () => userAPI.getProfile(username),
-    enabled: !!username,
+    queryKey: [QUERY_KEYS.USER_PROFILE, currentUsername],
+    queryFn: () => userAPI.getProfile(currentUsername),
+    enabled: !!currentUsername,
     retry: false,
   });
-
-  // debugger;
 
   const user = (fetchedUser || currentUser) as UserWithId;
   const isCurrentUser = user.username === currentUser?.username;

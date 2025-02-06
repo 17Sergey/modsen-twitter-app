@@ -6,7 +6,7 @@ import AsidePostImage from "../AsidePostImage";
 import styles from "./AsidePosts.module.scss";
 
 interface AsidePostsProps {
-  postsData: PostsWithUser | undefined;
+  postsData: PostsWithSameUser | undefined;
   isLoading: boolean;
   error: string | null;
   withPostText?: boolean;

@@ -1,9 +1,10 @@
 import { userAPI } from "@/entities/user/api/userAPI";
 import InputField from "@/shared/components/InputField";
 import Modal from "@/shared/components/Modal";
+import { QUERY_KEYS } from "@/shared/constants/constants";
 import { editProfileValidation } from "@/shared/utils/editProfileValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -12,7 +13,6 @@ import styles from "./EditProfileModal.module.scss";
 export interface EditFormData {
   fullName: string;
   phoneNumber?: string;
-  birthDate?: Date;
   bio?: string;
   link?: string;
 }
@@ -33,18 +33,23 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
   } = useForm<EditFormData>({
     defaultValues: {
       fullName: user.fullName,
-      phoneNumber: user.phoneNumber,
-      birthDate: user.birthDate,
+      phoneNumber: user.phoneNumber || "",
       bio: user.bio,
       link: user.link,
     },
     resolver: yupResolver(editProfileValidation),
   });
 
+  const queryClient = useQueryClient();
+
   const { mutate: editMutation, isPending } = useMutation({
     mutationFn: userAPI.editProfile,
     onSuccess: (message: string | undefined) => {
-      toast.success(message ? message : "Signed up successfully!");
+      toast.success(message ? message : "Profile edited successfully!");
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.USER_PROFILE, user.username],
+      });
+
       onClose();
     },
     onError: (error) => {
@@ -74,13 +79,6 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
           register={register}
           name="phoneNumber"
           error={errors.phoneNumber?.message}
-        />
-        <InputField
-          type="date"
-          placeholder="Birth Date"
-          register={register}
-          name="birthDate"
-          error={errors.birthDate?.message}
         />
         <InputField
           type="text"

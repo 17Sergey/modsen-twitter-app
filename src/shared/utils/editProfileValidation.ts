@@ -1,5 +1,8 @@
 import * as Yup from "yup";
 
+const PHONE_REGEX =
+  /^$|^\+?[0-9]{1,3}[-\s]?[0-9]{1,3}[-\s]?[0-9]{1,4}[-\s]?[0-9]{1,4}$/;
+
 export const editProfileValidation = Yup.object().shape({
   fullName: Yup.string()
     .required("Full name is required")
@@ -9,18 +12,14 @@ export const editProfileValidation = Yup.object().shape({
   phoneNumber: Yup.string()
     .optional()
     .matches(
-      /^\+?[0-9\s()-]+$/,
+      PHONE_REGEX,
       "Phone number must contain only digits and symbols +, (, ), -",
     ),
-
-  birthDate: Yup.date()
-    .optional()
-    .max(new Date(), "Birth date cannot be in the future"),
 
   bio: Yup.string().optional().max(200, "Bio cannot exceed 200 characters"),
 
   link: Yup.string()
-    .url("Link must be a valid URL")
     .optional()
+    .url("Link must be a valid URL")
     .max(100, "Link cannot exceed 100 characters"),
 });

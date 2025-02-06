@@ -1,4 +1,4 @@
-// Theme names are declared in shared/styles/_themes.scss and need to match
+/* NOTE: Theme names are declared in shared/styles/_themes.scss and need to match */
 export const THEME_NAMES = {
   LIGHT: "light",
   DARK: "dark",
@@ -45,8 +45,10 @@ export const JWT_SECRET = process.env.JWT_SECRET || "";
 export const QUERY_KEYS = {
   USER_AUTH: "getMe",
   USER_PROFILE: "userProfile",
+  FEED_POSTS: "feed",
   POSTS: "posts",
   COMMENTS: "comments",
+
   SUGGESTED_USERS: "suggestedUsers",
   SUGGESTED_POSTS: "suggestedPosts",
   SEARCHED_USERS: "searchedUsers",
