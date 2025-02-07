@@ -1,13 +1,12 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import { FC } from "react";
-
+import { postAPI } from "@/entities/post/api";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import AdvancedTextarea from "@/shared/components/AdvancedTextarea";
-
-import { postAPI } from "@/entities/post/api";
 import { useAdvancedTextarea } from "@/shared/components/AdvancedTextarea/useAdvancedTextarea";
+import ActionButton from "@/shared/components/buttons/ActionButton";
 import { QUERY_KEYS } from "@/shared/constants/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { FC } from "react";
 import toast from "react-hot-toast";
 import styles from "./AddPost.module.scss";
 
@@ -46,6 +45,8 @@ export const AddPost: FC<AddPostProps> = ({ onAdd }) => {
   });
 
   const handleAddPost = () => {
+    if (isPending) return;
+
     if (!text && !img) {
       toast.error("Post must have a text or image");
       return;
@@ -60,18 +61,23 @@ export const AddPost: FC<AddPostProps> = ({ onAdd }) => {
     createPostMutation(newPost);
   };
 
+  const renderButton = (
+    <ActionButton onClick={handleAddPost} disabled={isPending}>
+      {isPending ? "Tweeting..." : "Tweet"}
+    </ActionButton>
+  );
+
   return (
-    <div>
-      <h2>Add Tweet</h2>
-      <UserImg src={user?.profileImg} />
-      <AdvancedTextarea
-        needToReset={needToReset}
-        onTextChange={handleTextChange}
-        onImgChange={handleImgChange}
-      />
-      <button onClick={handleAddPost} className={styles.submitButton}>
-        {isPending ? "Posting..." : "Add tweet"}
-      </button>
+    <div className={styles.container}>
+      <UserImg src={user?.profileImg} className={styles.userImg} />
+      <div className={styles.textArea}>
+        <AdvancedTextarea
+          needToReset={needToReset}
+          onTextChange={handleTextChange}
+          onImgChange={handleImgChange}
+          renderButton={renderButton}
+        />
+      </div>
     </div>
   );
 };

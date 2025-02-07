@@ -7,6 +7,7 @@ import { QUERY_KEYS } from "@/shared/constants/constants";
 import UserProfile from "@/widgets/UserProfile";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
+import styles from "./ProfilePage.module.scss";
 import UserPosts from "./UserPosts";
 
 interface ProfilePageProps {
@@ -35,7 +36,11 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
       {user && (
         <>
           <UserProfile user={user} />
-          {isCurrentUser && <AddPost />}
+          {isCurrentUser && (
+            <div className={styles.addPost}>
+              <AddPost />
+            </div>
+          )}
           <UserPosts username={user.username} />
         </>
       )}

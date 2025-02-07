@@ -5,6 +5,7 @@ import { commentsAPI } from "@/entities/comment/api";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import AdvancedTextarea from "@/shared/components/AdvancedTextarea";
 import { useAdvancedTextarea } from "@/shared/components/AdvancedTextarea/useAdvancedTextarea";
+import ActionButton from "@/shared/components/buttons/ActionButton";
 import { QUERY_KEYS } from "@/shared/constants/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
@@ -28,7 +29,7 @@ export const AddComment: FC<AddCommentProps> = ({ postId }) => {
 
   const queryClient = useQueryClient();
 
-  const { mutate: addCommentMutation } = useMutation({
+  const { mutate: addCommentMutation, isPending } = useMutation({
     mutationFn: commentsAPI.addComment,
     onSuccess: () => {
       toast.success("Comment added successfully");
@@ -59,18 +60,24 @@ export const AddComment: FC<AddCommentProps> = ({ postId }) => {
     addCommentMutation(newComment);
   };
 
+  const renderButton = (
+    <ActionButton onClick={handleAddComment} disabled={isPending}>
+      {isPending ? "Commenting..." : "Comment"}
+    </ActionButton>
+  );
+
   return (
-    <div>
+    <div className={styles.container}>
       <UserImg src={user?.profileImg} />
-      <AdvancedTextarea
-        placeholder="Your comment..."
-        needToReset={needToReset}
-        onTextChange={handleTextChange}
-        onImgChange={handleImgChange}
-      />
-      <button onClick={handleAddComment} className={styles.submitButton}>
-        Add comment
-      </button>
+      <div className={styles.textArea}>
+        <AdvancedTextarea
+          placeholder="Your comment..."
+          needToReset={needToReset}
+          onTextChange={handleTextChange}
+          onImgChange={handleImgChange}
+          renderButton={renderButton}
+        />
+      </div>
     </div>
   );
 };

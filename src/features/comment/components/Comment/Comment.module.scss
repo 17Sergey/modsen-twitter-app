@@ -1,19 +1,22 @@
-.saveButton {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.comment {
+  margin-top: var(--margin-base);
+  padding-bottom: var(--margin-base);
 
-  &:hover {
-    background-color: #1a91da;
-  }
+  display: flex;
+  gap: var(--margin-sm);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-sm);
+  margin-bottom: var(--margin-sm);
 }
 
 .commentImg {
-  max-width: 10rem;
-  height: auto;
+  border-radius: var(--padding-xs);
+  max-width: 400px;
+  width: 100%;
+
+  margin-top: var(--margin-base);
 }

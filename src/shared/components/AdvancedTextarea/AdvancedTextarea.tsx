@@ -1,18 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
-import { ChangeEvent, FC, useEffect, useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-
-import Image from "next/image";
-import styles from "./AdvancedTextarea.module.scss";
-
 import CloseIcon from "@/shared/assets/close.svg";
 import ImgIcon from "@/shared/assets/image.svg";
+import Image from "next/image";
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useForm } from "react-hook-form";
+import styles from "./AdvancedTextarea.module.scss";
 
 interface AdvancedTextareaProps {
   placeholder?: string;
   onTextChange: (newText: string) => void;
   onImgChange: (newImg: string | null) => void;
   needToReset?: boolean;
+  renderButton?: ReactNode;
 }
 
 interface AdvancedTextareaForm {
@@ -24,6 +31,7 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
   onTextChange,
   onImgChange,
   needToReset,
+  renderButton,
 }) => {
   const imgRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState<string | null>(null);
@@ -55,6 +63,10 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
 
   const text = watch("text");
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     onTextChange(text);
   }, [text, onTextChange]);
@@ -64,7 +76,6 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
   }, [img, onImgChange]);
 
   useEffect(() => {
-    // debugger;
     if (needToReset) {
       reset();
       clearImage();
@@ -72,7 +83,7 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
   }, [needToReset, reset]);
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <textarea
         className={styles.textarea}
         placeholder={placeholder}
@@ -80,36 +91,36 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
       />
       {img && (
         <div className={styles.imageContainer}>
-          <Image
-            alt="Remove uploaded img"
-            aria-label="Remove uploaded img"
-            src={CloseIcon}
-            width={200}
-            height={100}
-            className={styles.closeIcon}
-            onClick={clearImage}
-          />
+          <div className={styles.close}>
+            <Image
+              alt="Remove uploaded img"
+              aria-label="Remove uploaded img"
+              src={CloseIcon}
+              className={styles.closeIcon}
+              onClick={clearImage}
+            />
+          </div>
           <img src={img} alt="Uploaded" />
         </div>
       )}
-      <div className={styles.actions}>
-        <div className={styles.actionContainer}>
-          <div className={styles.imageUpload}>
-            <Image
-              alt="Upload img"
-              aria-label="Upload img"
-              src={ImgIcon}
-              onClick={() => imgRef.current?.click()}
-            />
-            <input
-              className={styles.fileInput}
-              type="file"
-              accept="image/*"
-              ref={imgRef}
-              onChange={handleImageChange}
-            />
-          </div>
+      <div className={styles.footer}>
+        <div>
+          <Image
+            className={styles.imgIcon}
+            alt="Upload img"
+            aria-label="Upload img"
+            src={ImgIcon}
+            onClick={() => imgRef.current?.click()}
+          />
+          <input
+            className={styles.fileInput}
+            type="file"
+            accept="image/*"
+            ref={imgRef}
+            onChange={handleImageChange}
+          />
         </div>
+        {renderButton}
       </div>
     </form>
   );

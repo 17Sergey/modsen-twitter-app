@@ -43,7 +43,7 @@ export const DeletePost: FC<DeletePostProps> = ({ postId, postOwnerId }) => {
 
   return (
     <span className={styles.n}>
-      <button onClick={openModal}>
+      <button onClick={openModal} className={styles.button}>
         <Image src={TrashIcon} width={24} height={24} alt="Delete" />
       </button>
       {isOpen && (

@@ -9,10 +9,17 @@
 
 .main {
   flex: 1;
-  flex-grow: 2;
   padding: var(--padding-base);
   background-color: var(--background-color);
   overflow-y: auto;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 230px;
+
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
 }
 
 .aside {

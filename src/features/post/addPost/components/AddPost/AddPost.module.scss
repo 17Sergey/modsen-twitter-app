@@ -1,90 +1,13 @@
 .container {
-  padding: 1rem;
-}
-
-.header {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  gap: var(--margin-base);
 }
 
-.textarea {
-  margin-top: 1rem;
-  resize: none;
-  border: none;
-  outline: none;
+.userImg {
+  width: var(--width-icon-md);
+  height: var(--width-icon-md);
+}
+
+.textArea {
   width: 100%;
-  font-size: 1.125rem; // text-lg
-  padding-left: 0;
-
-  &:focus {
-    border-bottom: 2px solid var(--theme-accent);
-  }
-}
-
-.imageContainer {
-  width: 75%;
-  margin: 0 auto;
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-top: 1rem;
-
-  img {
-    margin-top: 1rem;
-    max-width: 100%;
-    border-radius: 4px; // можно добавить, если нужно
-  }
-}
-
-.closeIcon {
-  position: absolute;
-  top: 1.25rem;
-  right: -0.75rem;
-  background-color: var(--neutral);
-  border-radius: 50%;
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-}
-
-.actions {
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--neutral);
-
-  .actionContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .imageUpload {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
-      svg {
-        width: 1.75rem; // w-7
-        height: 1.75rem; // h-7
-        fill: var(--primary);
-        cursor: pointer;
-      }
-    }
-  }
-}
-.submitButton {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #1a91da;
-  }
-}
-
-.fileInput {
-  display: none;
 }

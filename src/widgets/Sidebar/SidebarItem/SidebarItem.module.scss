@@ -1,17 +1,20 @@
 .sidebarItem {
   display: flex;
   align-items: center;
-  padding: 10px;
-  cursor: pointer;
+
+  padding: var(--padding-m);
+  border-radius: var(--padding-xl);
+
   transition: background-color 0.2s;
+  cursor: pointer;
 
   &:hover {
-    background-color: #f5f8fa;
+    background-color: var(--input-color);
   }
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
+  width: var(--width-icon-sm);
+  height: var(--width-icon-sm);
+  margin-right: calc(var(--margin-sm) + var(--margin-xs));
 }

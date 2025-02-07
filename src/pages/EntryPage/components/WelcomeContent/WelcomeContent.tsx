@@ -19,6 +19,7 @@ export const WelcomeContent = () => (
         width={500}
         height={500}
         className={styles.image}
+        unoptimized={true}
       />
     </div>
     <div className={styles.content}>

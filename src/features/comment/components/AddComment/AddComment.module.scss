@@ -1,14 +1,15 @@
-.submitButton {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.container {
+  display: flex;
+  gap: var(--margin-base);
 
-  &:hover {
-    background-color: #1a91da;
-  }
+  margin-top: var(--margin-md);
+}
+
+.userImg {
+  width: var(--width-icon-md);
+  height: var(--width-icon-md);
+}
+
+.textArea {
+  width: 100%;
 }

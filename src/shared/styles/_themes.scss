@@ -18,6 +18,7 @@
   --width-icon-xxs: 0.5rem;
   --width-icon-xs: 1rem;
   --width-icon-sm: 1.5rem;
+  --width-icon-m: 1.75rem;
   --width-icon-base: 2rem;
   --width-icon-md: 2.5rem;
   --width-icon-xl: 4rem;
@@ -51,7 +52,9 @@ html[data-theme="light"] {
   --text-neutral: #{$light-text-neutral};
   --neutral-border: #{$light-neutral-border};
   --input-color: #{$light-input};
+  --border-color: #{$light-border};
   --search-placeholder: #{$light-search-placeholder};
+  --disabled: #{$light-disabled};
   --icon-neutral: #{$light-icon-neutral};
   --placeholder: #{$light-placeholder};
   --primary-color: #{$light-primary};
@@ -59,6 +62,7 @@ html[data-theme="light"] {
   --error-color: #{$light-error};
   --icon-color: #{$light-icon};
   --like-color: #{$light-like};
+  --white-color: #ffffff;
 }
 
 html[data-theme="dark"] {
@@ -68,7 +72,9 @@ html[data-theme="dark"] {
   --text-neutral: #{$dark-text-neutral};
   --neutral-border: #{$dark-neutral-border};
   --input-color: #{$dark-input};
+  --border-color: #{$dark-border};
   --search-placeholder: #{$dark-search-placeholder};
+  --disabled: #{$dark-disabled};
   --icon-neutral: #{$dark-icon-neutral};
   --placeholder: #{$dark-placeholder};
   --primary-color: #{$dark-primary};
@@ -76,4 +82,5 @@ html[data-theme="dark"] {
   --error-color: #{$dark-error};
   --icon-color: #{$dark-icon};
   --like-color: #{$dark-like};
+  --white-color: #ffffff;
 }

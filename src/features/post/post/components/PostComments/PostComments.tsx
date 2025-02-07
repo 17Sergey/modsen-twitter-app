@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { FC } from "react";
 import AddComment from "../../../../comment/components/AddComment";
+import styles from "./PostComments.module.scss";
 
 interface PostCommentsProps {
   postId: PostWithId["id"];
@@ -36,14 +37,13 @@ export const PostComments: FC<PostCommentsProps> = ({ postId }) => {
 
   return (
     <>
-      <button onClick={handleOpenComments}>
+      <button onClick={handleOpenComments} className={styles.button}>
         <Image src={CommentIcon} alt="Comment" width={24} height={24} />
         <span>{commentsData?.length || 0}</span>
       </button>
 
       {isCommentsModalOpen && (
         <Modal onClose={closeCommentsModal}>
-          <p>Post comments:</p>
           <Comments
             commentsData={commentsData}
             isLoading={isLoading}

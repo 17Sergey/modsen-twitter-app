@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentProps, FC } from "react";
 
 import ProfileImg from "@/shared/assets/images/avatar.png";
@@ -18,6 +20,7 @@ export const UserImg: FC<ComponentProps<"img">> = ({
       src={src || ProfileImg}
       className={`${styles.img} ${className}`}
       alt={alt || "User profile"}
+      unoptimized={true}
     />
   );
 };

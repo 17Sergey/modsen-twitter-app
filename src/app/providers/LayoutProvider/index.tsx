@@ -1,7 +1,7 @@
 "use client";
 
 import { PROTECTED_ROUTES } from "@/shared/constants/constants";
-import Aside from "@/widgets/aside/components/Aside";
+import Aside from "@/widgets/Aside/components/Aside";
 import Sidebar from "@/widgets/Sidebar";
 import { usePathname } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
@@ -15,7 +15,7 @@ export const LayoutProvider: FC<PropsWithChildren> = ({ children }) => {
   if (isProtectedRoute)
     return (
       <div className={styles.wrapper}>
-        <nav>
+        <nav className={styles.sidebar}>
           <Sidebar />
         </nav>
         <main className={styles.main}>{children}</main>
