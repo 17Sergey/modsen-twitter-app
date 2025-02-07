@@ -1,4 +1,4 @@
-import { db } from "@/app/api/firebase";
+import { db } from "@/appFSD/api/firebase";
 import {
   collection,
   CollectionReference,

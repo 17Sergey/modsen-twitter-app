@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useAuth } from "@/app/providers/AuthProvider/useAuth";
+import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import TrashIcon from "@/shared/assets/trash.svg";
 import Modal from "@/shared/components/Modal";

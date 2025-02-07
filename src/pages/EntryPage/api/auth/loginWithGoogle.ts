@@ -1,5 +1,5 @@
-import { getUserFriendlyMessage } from "@/app/api/firebase/errorCodes";
-import { auth, googleProvider } from "@/app/api/firebase";
+import { getUserFriendlyMessage } from "@/appFSD/api/firebase/errorCodes";
+import { auth, googleProvider } from "@/appFSD/api/firebase";
 import { FirebaseError } from "firebase/app";
 import { signInWithPopup } from "firebase/auth";
 import { generateTokenAndSetCookie } from "@/entities/user/api/generateTokenAndSetCookie";

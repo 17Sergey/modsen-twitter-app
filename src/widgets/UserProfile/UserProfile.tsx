@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useAuth } from "@/app/providers/AuthProvider/useAuth";
+import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
 import UserImg from "@/entities/user/components/UserImg";
 import EditProfileModal from "@/features/profile/EditProfileModal";
 import FollowUser from "@/features/user/FollowUser";

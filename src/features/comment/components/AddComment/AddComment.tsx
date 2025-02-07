@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { useAuth } from "@/app/providers/AuthProvider/useAuth";
+import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
 import { commentsAPI } from "@/entities/comment/api";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import AdvancedTextarea from "@/shared/components/AdvancedTextarea";
