@@ -14,3 +14,8 @@ interface PostModel {
 interface PostWithId extends PostModel {
   id: string;
 }
+
+interface PostsWithUser extends PostModel {
+  user: UserWithId;
+  posts: PostWithId[];
+}
