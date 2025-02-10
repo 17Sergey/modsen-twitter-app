@@ -1,5 +1,5 @@
 import { FC } from "react";
-import PrimaryButton from "../PrimaryButton";
+import Button from "../Button";
 import { ButtonProps } from "../types";
 import styles from "./ActionButton.module.scss";
 
@@ -9,8 +9,8 @@ export const ActionButton: FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <PrimaryButton className={`${styles.button} ${className}`} {...props}>
+    <Button className={`${styles.actionButton} ${className}`} {...props}>
       {children}
-    </PrimaryButton>
+    </Button>
   );
 };

@@ -1,58 +1,48 @@
-.formContainer {
+@use "@/shared/styles/_breakpoints.scss" as *;
+
+.wrapper {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--padding-base);
+
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .container {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
+  width: 100%;
+}
+
+.logo {
+  text-align: left;
+}
+
+.icon {
+  margin: var(--margin-base) 0;
+  width: 3rem;
+  height: 3rem;
 }
 
 .heading {
-  margin-bottom: 20px;
+  margin-bottom: var(--margin-base);
+  text-align: start;
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
 }
 
 .inputGroup {
-  margin-bottom: 15px;
-  text-align: left;
-
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-
-    &:focus {
-      border-color: #1da1f2;
-      outline: none;
-    }
+  & > * {
+    margin-bottom: var(--margin-base);
   }
 }
 
 .submitButton {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #1a91da;
-  }
+  width: 100%;
+  margin-top: var(--margin-sm);
 }
 
 .google {
@@ -60,8 +50,9 @@
 }
 
 .link {
-  margin-top: 15px;
-  color: #1da1f2;
+  margin-top: var(--margin-base);
+  color: var(--primary-color);
+  text-align: right;
 
   &:hover {
     text-decoration: underline;

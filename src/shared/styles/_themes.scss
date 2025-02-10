@@ -8,6 +8,7 @@
   --font-size-m: 0.9375rem; /* 15px */
   --font-size-base: 1rem; /* 16px */
   --font-size-md: 1.25rem; /* 20px */
+  --font-size-lg: 2rem; /* 32px */
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -43,6 +44,12 @@
   --margin-xl: 4rem;
   --margin-xxl: 6rem;
   --margin-lg: 9rem;
+
+  /* Breakpoints */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 768px;
+  --breakpoint-md: 1024px;
+  --breakpoint-lg: 1200px;
 }
 
 html[data-theme="light"] {
@@ -58,6 +65,7 @@ html[data-theme="light"] {
   --icon-neutral: #{$light-icon-neutral};
   --placeholder: #{$light-placeholder};
   --primary-color: #{$light-primary};
+  --primary-darker-color: #{$light-primary-darker};
   --secondary-color: #{$light-secondary};
   --error-color: #{$light-error};
   --icon-color: #{$light-icon};
@@ -78,6 +86,7 @@ html[data-theme="dark"] {
   --icon-neutral: #{$dark-icon-neutral};
   --placeholder: #{$dark-placeholder};
   --primary-color: #{$dark-primary};
+  --primary-darker-color: #{$dark-primary-darker};
   --secondary-color: #{$dark-secondary};
   --error-color: #{$dark-error};
   --icon-color: #{$dark-icon};

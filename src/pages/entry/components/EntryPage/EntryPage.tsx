@@ -1,9 +1,9 @@
 "use client";
 
-import WelcomeContent from "./components/WelcomeContent";
-import WelcomeFooter from "./components/WelcomeFooter";
+import WelcomeFooter from "./WelcomeFooter";
 
 import styles from "./EntryPage.module.scss";
+import WelcomeContent from "./WelcomeContent";
 
 export const EntryPage = () => (
   <div className={styles.wrapper}>
@@ -15,5 +15,3 @@ export const EntryPage = () => (
     </footer>
   </div>
 );
-
-export default EntryPage;

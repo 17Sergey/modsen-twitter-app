@@ -1,4 +1,5 @@
 import { ComponentProps, FC } from "react";
+import Button from "../Button";
 import styles from "./FollowButton.module.scss";
 
 interface FollowButtonProps extends ComponentProps<"button"> {
@@ -12,12 +13,12 @@ export const FollowButton: FC<FollowButtonProps> = ({
   ...props
 }) => {
   return (
-    <button
-      className={`${styles.button} ${isFollowing ? styles.following : styles.notFollowing}`}
+    <Button
+      className={`${styles.followButton} ${isFollowing ? styles.following : styles.notFollowing}`}
       {...props}
     >
       {isFollowing ? "Unfollow" : "Follow"}
       {isLoading && <span>spin</span>}
-    </button>
+    </Button>
   );
 };

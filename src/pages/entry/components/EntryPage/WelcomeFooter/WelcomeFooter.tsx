@@ -24,12 +24,12 @@ const LINKS = [
 ];
 
 export const WelcomeFooter = () => (
-  <footer className={styles.links}>
+  <div className={styles.links}>
     {LINKS.map(({ title, href }) => (
       <Link key={title} href={href} className={styles.linkItem}>
         {title}
       </Link>
     ))}
     <p className={styles.linkItem}>© 2025 Twitter, Inc.</p>
-  </footer>
+  </div>
 );

@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   gap: var(--padding-base);
+  flex-wrap: wrap;
 
-  padding: var(--padding-base) 0;
+  padding: var(--padding-base) var(--padding-sm);
 }
 
 .linkItem {

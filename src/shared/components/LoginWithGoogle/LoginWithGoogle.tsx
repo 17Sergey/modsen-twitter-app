@@ -1,6 +1,9 @@
 "use client";
 
+import GoogleIcon from "@/shared/assets/google.webp";
 import AddUsernameModal from "@/shared/components/LoginWithGoogle/AddUsernameModal";
+import Image from "next/image";
+import Button from "../buttons/Button";
 import styles from "./LoginWithGoogle.module.scss";
 import { useGoogleAuth } from "./hooks/useGoogleAuth";
 
@@ -23,9 +26,12 @@ export const LoginWithGoogle = () => {
           />
         )}
       </div>
-      <button className={styles.button} onClick={handleLoginWithGoogle}>
-        {isLogginInWithGoogle ? "Logging you in..." : "Log in with Google"}
-      </button>
+      <Button className={styles.button} onClick={handleLoginWithGoogle}>
+        <div className={styles.buttonContent}>
+          <Image src={GoogleIcon} width={24} height={24} alt="Google logo" />
+          {isLogginInWithGoogle ? "Logging you in..." : "Log in with Google"}
+        </div>
+      </Button>
     </div>
   );
 };

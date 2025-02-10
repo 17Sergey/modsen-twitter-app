@@ -1,0 +1,20 @@
+.button {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-secondary);
+
+  min-height: 50px;
+
+  background-color: transparent;
+
+  border: 1px solid var(--neutral-border);
+  border-radius: var(--padding-lg);
+  padding: var(--padding-m) var(--padding-lg);
+
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: var(--placeholder);
+  }
+}

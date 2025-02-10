@@ -1,27 +1,16 @@
 "use client";
 
-import styles from "./WelcomeContent.module.scss";
-
 import TwitterIcon from "@/shared/assets/twitter.svg";
-import TwitterPhoto from "@/shared/assets/twitter.webp";
 import { ROUTES } from "@/shared/constants/constants";
 import Image from "next/image";
 import Link from "next/link";
 import AuthControls from "./AuthControls";
+import styles from "./WelcomeContent.module.scss";
+import WelcomeImage from "./WelcomeImage";
 
 export const WelcomeContent = () => (
   <section className={styles.wrapper}>
-    <div className={styles.imageContainer}>
-      <Image
-        src={TwitterPhoto}
-        alt={"Twitter logo"}
-        priority
-        width={500}
-        height={500}
-        className={styles.image}
-        unoptimized={true}
-      />
-    </div>
+    <WelcomeImage />
     <div className={styles.content}>
       <div className={styles.logo}>
         <Image

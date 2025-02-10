@@ -1,4 +1,4 @@
-import { authAPI } from "@/pages/EntryPage/api/auth";
+import { authAPI } from "@/pages/entry/api/auth";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import { ROUTES } from "@/shared/constants/constants";
 import { useMutation } from "@tanstack/react-query";

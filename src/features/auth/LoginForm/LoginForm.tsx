@@ -1,11 +1,15 @@
 "use client";
 
-import { authAPI } from "@/pages/EntryPage/api/auth";
+import { authAPI } from "@/pages/entry/api/auth";
+import TwitterIcon from "@/shared/assets/twitter.svg";
+import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
+import InputField from "@/shared/components/InputField";
 import LoginWithGoogle from "@/shared/components/LoginWithGoogle";
 import { ROUTES } from "@/shared/constants/constants";
 import { loginValidation } from "@/shared/utils/loginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent } from "react";
@@ -56,46 +60,55 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Image
+            src={TwitterIcon}
+            alt={"Twitter icon"}
+            width={24}
+            height={24}
+            className={styles.icon}
+          />
+        </div>
         <h2 className={styles.heading}>Log in to Twitter</h2>
 
-        <div className={styles.inputGroup}>
-          <label>Username or email address</label>
-          <input
-            {...register("usernameOrEmail")}
-            type="text"
-            placeholder="Username or email address"
-          />
-          {errors.usernameOrEmail && (
-            <span>{errors.usernameOrEmail.message}</span>
-          )}
-        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.formContainer}
+        >
+          <div className={styles.inputGroup}>
+            <InputField
+              type="text"
+              placeholder="Username or email address"
+              register={register}
+              name={"usernameOrEmail"}
+              error={errors.usernameOrEmail?.message}
+            />
+            <InputField
+              type="password"
+              placeholder="Password"
+              register={register}
+              name={"password"}
+              error={errors.password?.message}
+            />
+          </div>
 
-        <div className={styles.inputGroup}>
-          <label>Password</label>
-          <input
-            {...register("password")}
-            type="password"
-            placeholder="Password"
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
+          <PrimaryButton type="submit" className={styles.submitButton}>
+            Log In
+          </PrimaryButton>
 
-        <button type="submit" className={styles.submitButton}>
-          Log In
-        </button>
+          <div className={styles.google} onClick={handleGoogleLogin}>
+            <LoginWithGoogle />
+          </div>
 
-        <div className={styles.google} onClick={handleGoogleLogin}>
-          <LoginWithGoogle />
-        </div>
-
-        <div className={styles.link}>
-          <p>
-            <Link href={ROUTES.SIGNUP}>Sign up to Twitter</Link>
-          </p>
-        </div>
-      </form>
+          <div className={styles.link}>
+            <p>
+              <Link href={ROUTES.SIGNUP}>Sign up to Twitter</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

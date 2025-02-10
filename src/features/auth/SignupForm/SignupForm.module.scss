@@ -1,55 +1,61 @@
 .formContainer {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto var(--margin-md);
+
+  padding: 0 var(--padding-base);
+
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
+.icon {
+  margin: var(--margin-base) 0;
+  width: 3rem;
+  height: 3rem;
+}
+
 .heading {
-  margin-bottom: 20px;
+  margin-bottom: var(--margin-base);
+  text-align: start;
+
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
 }
 
-.inputContainer {
-  position: relative;
-  padding-bottom: 10px;
-
-  // margin-bottom: 10px;
+.field {
+  margin: 0 0 var(--margin-base);
 }
 
-.submitButton {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #1a91da;
-  }
+.birthDateHeading {
+  font-size: var(--font-size-md);
 }
 
-.link {
-  margin-top: 15px;
-  color: #1da1f2;
+.birthDateText {
+  text-align: left;
+  color: var(--text-neutral);
+  font-size: var(--font-size-sm);
+  line-height: 130%;
+}
 
-  &:hover {
-    text-decoration: underline;
+.buttons {
+  margin-top: var(--margin-md);
+  & > * {
+    width: 100%;
+    margin: var(--margin-sm) 0;
   }
 }
 
 .dateContainer {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: space-between;
 
   margin: 1rem 0;
-}
 
-.dateContainer select {
-  flex: 1;
-  height: 40px;
+  & > * {
+    flex: 1;
+  }
 }

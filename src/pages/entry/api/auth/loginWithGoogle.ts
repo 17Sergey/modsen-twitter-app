@@ -1,7 +1,7 @@
 import { getUserFriendlyMessage } from "@/app/api/firebase/errorCodes";
 import { auth, googleProvider } from "@/app/api/firebase";
 import { FirebaseError } from "firebase/app";
-import { signInWithPopup } from "firebase/auth";
+import { onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { generateTokenAndSetCookie } from "@/entities/user/api/generateTokenAndSetCookie";
 import { userRepository } from "@/entities/user/api/UserRepository";
 
@@ -9,6 +9,10 @@ export const loginWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) throw new Error("Google auth was interrupted");
+    });
 
     if (!user) throw new Error("User was not found in Google. Try later");
 

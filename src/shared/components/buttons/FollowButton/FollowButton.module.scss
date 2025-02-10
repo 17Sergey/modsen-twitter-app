@@ -1,14 +1,4 @@
-.button {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
-
-  &:hover {
-    background-color: #1a91da;
-  }
+.followButton {
+  background-color: var(--secondary-color);
+  color: var(--white-color);
 }

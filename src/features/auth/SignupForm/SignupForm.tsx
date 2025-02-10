@@ -1,10 +1,14 @@
-import { authAPI } from "@/pages/EntryPage/api/auth";
+import { authAPI } from "@/pages/entry/api/auth";
+import TwitterIcon from "@/shared/assets/twitter.svg";
+import LinkButton from "@/shared/components/buttons/LinkButton";
+import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
+import Select from "@/shared/components/Select";
 import { ROUTES } from "@/shared/constants/constants";
 import { signupValidation } from "@/shared/utils/signupValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
-import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -56,35 +60,66 @@ export const SignupForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.formContainer}>
+      <div className={styles.logo}>
+        <Image
+          src={TwitterIcon}
+          alt={"Twitter icon"}
+          width={24}
+          height={24}
+          className={styles.icon}
+        />
+      </div>
       <h2 className={styles.heading}>Create an account</h2>
 
-      {inputFields.map((field) => (
-        <InputField
-          key={field.name}
-          type={field.type}
-          placeholder={field.placeholder}
-          register={register}
-          name={field.name}
-          error={errors[field.name]?.message}
-        />
-      ))}
+      <ul>
+        {inputFields.map((field) => (
+          <li className={styles.field} key={field.name}>
+            <InputField
+              type={field.type}
+              placeholder={field.placeholder}
+              register={register}
+              name={field.name}
+              error={errors[field.name]?.message}
+            />
+          </li>
+        ))}
+      </ul>
 
       <div className={styles.inputGroup}>
-        <label>Date of Birth</label>
+        <h3 className={`${styles.heading} ${styles.birthDateHeading}`}>
+          Date of Birth
+        </h3>
+        <p className={`${styles.birthDateText}`}>
+          Facilisi sem pulvinar velit nunc, gravida scelerisque amet nibh sit.
+          Quis bibendum ante phasellus metus, magna lacinia sed augue. Odio enim
+          nascetur leo mauris vel eget. Pretium id ullamcorper blandit viverra
+          dignissim eget tellus. Nibh mi massa in molestie a sit. Elit congue.
+        </p>
         <div className={styles.dateContainer}>
-          <select {...register("birthDate.month")}>
+          <Select
+            {...register("birthDate.day")}
+            error={errors.birthDate?.day?.message}
+          >
+            {renderDayOptions()}
+          </Select>
+          <Select
+            {...register("birthDate.month")}
+            error={errors.birthDate?.month?.message}
+          >
             {renderMonthOptions()}
-          </select>
-          <select {...register("birthDate.day")}>{renderDayOptions()}</select>
-          <select {...register("birthDate.year")}>{renderYearOptions()}</select>
+          </Select>
+          <Select
+            {...register("birthDate.year")}
+            error={errors.birthDate?.year?.message}
+          >
+            {renderYearOptions()}
+          </Select>
         </div>
       </div>
 
-      <button type="submit" className={styles.submitButton}>
-        Next
-      </button>
-      <div className={styles.link}>
-        <Link href={ROUTES.LOGIN}>Go to logins</Link>
+      <div className={styles.buttons}>
+        <PrimaryButton type="submit">Next</PrimaryButton>
+        <LinkButton href={ROUTES.LOGIN}>Go to Log In</LinkButton>
       </div>
     </form>
   );

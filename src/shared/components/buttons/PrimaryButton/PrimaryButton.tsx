@@ -1,20 +1,16 @@
 import { FC } from "react";
+import Button from "../Button";
 import { ButtonProps } from "../types";
 import styles from "./PrimaryButton.module.scss";
 
 export const PrimaryButton: FC<ButtonProps> = ({
   className,
   children,
-  disabled = false,
   ...props
 }) => {
   return (
-    <button
-      className={`${styles.button} ${className}`}
-      {...props}
-      disabled={disabled}
-    >
+    <Button className={`${styles.primaryButton} ${className}`} {...props}>
       {children}
-    </button>
+    </Button>
   );
 };

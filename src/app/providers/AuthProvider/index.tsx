@@ -45,7 +45,7 @@
 
 "use client";
 
-import { getMe } from "@/pages/EntryPage/api/auth/getMe";
+import { getMe } from "@/pages/entry/api/auth/getMe";
 import { useQuery } from "@tanstack/react-query";
 import { FC, PropsWithChildren } from "react";
 import { AuthContext, UserType } from "./context";

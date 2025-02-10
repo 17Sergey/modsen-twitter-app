@@ -1,0 +1,39 @@
+.button {
+  width: 2.5rem;
+  height: auto;
+  outline-offset: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.ellipse {
+  width: 3rem;
+  height: 1.5rem;
+  background-color: var(--background-neutral);
+  outline: 2px solid var(--border-color);
+  padding: 1px;
+  position: relative;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.circle {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+
+  transition: left 0.3s ease;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+
+  width: 1.25rem;
+  &.dark {
+    left: calc(100% - 1.25rem - 2px);
+  }
+
+  &.light {
+    left: 2px;
+  }
+}

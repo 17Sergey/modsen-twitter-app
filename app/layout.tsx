@@ -11,7 +11,7 @@ const roboto = Roboto({
   weight: ["400", "500", "700", "900"],
 });
 
-const robotoSans = Roboto_Serif({
+const robotoSerif = Roboto_Serif({
   variable: "--font-roboto-serif",
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} ${robotoSans.variable}`}>
+      <body className={`${roboto.variable} ${robotoSerif.variable}`}>
         <App>{children}</App>
       </body>
     </html>
