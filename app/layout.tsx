@@ -1,4 +1,4 @@
-import App from "@/appFSD";
+import App from "@/app";
 import "@/shared/styles/global.scss";
 
 import type { Metadata } from "next";

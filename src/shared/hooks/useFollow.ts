@@ -1,4 +1,4 @@
-import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { userAPI } from "@/entities/user/api/userAPI";
 import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";

@@ -15,3 +15,5 @@ export const EntryPage = () => (
     </footer>
   </div>
 );
+
+export default EntryPage;

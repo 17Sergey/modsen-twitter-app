@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 
 import styles from "./LikePost.module.scss";
 
-import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import LikedIcon from "@/shared/assets/like/like-fill.svg";
 import LikeIcon from "@/shared/assets/like/like.svg";

@@ -1,4 +1,4 @@
-import { UserType } from "@/appFSD/providers/AuthProvider/context";
+import { UserType } from "@/app/providers/AuthProvider/context";
 import { API_ROUTES } from "@/shared/constants/constants";
 
 export const getMe = async (): Promise<UserType> => {

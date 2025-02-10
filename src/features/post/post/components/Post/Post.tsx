@@ -1,4 +1,4 @@
-import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import UserFullname from "@/entities/user/components/UserFullname";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import Username from "@/entities/user/components/Username";

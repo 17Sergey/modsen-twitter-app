@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import FollowButton from "@/shared/components/buttons/FollowButton";
 import { useFollow } from "@/shared/hooks/useFollow";
 import { FC } from "react";

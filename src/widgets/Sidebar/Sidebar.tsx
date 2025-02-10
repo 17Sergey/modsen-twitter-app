@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/appFSD/providers/AuthProvider/useAuth";
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 
 import TwitterLogo from "@/shared/assets/twitter.svg";
 import { ROUTES } from "@/shared/constants/constants";
