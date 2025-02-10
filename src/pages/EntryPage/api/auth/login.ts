@@ -1,3 +1,4 @@
+import { generateTokenAndSetCookie } from "@/entities/user/api/generateTokenAndSetCookie";
 import { userRepository } from "@/entities/user/api/UserRepository";
 
 interface LoginParams {
@@ -17,6 +18,10 @@ export const login = async ({ usernameOrEmail, password }: LoginParams) => {
   }
 
   loginChecks(existingUser, password);
+
+  if (existingUser) {
+    await generateTokenAndSetCookie(existingUser);
+  }
 
   return existingUser;
 };
