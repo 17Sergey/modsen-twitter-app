@@ -1,0 +1,18 @@
+.container {
+  margin-right: var(--margin-md);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.sidebarImage {
+  width: var(--width-icon-md);
+  height: var(----width-icon-md);
+
+  margin-left: var(--margin-sm);
+  margin-top: var(--margin-base);
+  margin-bottom: var(--margin-base);
+}

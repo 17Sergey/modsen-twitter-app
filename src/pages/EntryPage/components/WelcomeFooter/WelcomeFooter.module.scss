@@ -1,0 +1,15 @@
+.links {
+  display: flex;
+  justify-content: center;
+  gap: var(--padding-base);
+
+  padding: var(--padding-base) 0;
+}
+
+.linkItem {
+  font-size: var(--font-size-sm);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

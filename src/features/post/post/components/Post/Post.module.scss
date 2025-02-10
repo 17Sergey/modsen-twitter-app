@@ -1,0 +1,31 @@
+.post {
+  margin-top: var(--margin-base);
+  padding-bottom: var(--margin-base);
+
+  display: flex;
+  gap: var(--margin-sm);
+
+  border-bottom: 1px solid var(--border-color);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-sm);
+  margin-bottom: var(--margin-sm);
+}
+
+.postImg {
+  border-radius: var(--padding-xs);
+  max-width: 700px;
+  width: 100%;
+
+  margin-top: var(--margin-base);
+}
+
+.controls {
+  margin-top: var(--margin-base);
+
+  display: flex;
+  gap: var(--margin-sm);
+}
