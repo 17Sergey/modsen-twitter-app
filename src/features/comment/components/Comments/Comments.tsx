@@ -1,5 +1,7 @@
+import Loader from "@/shared/components/Loader";
 import { FC } from "react";
 import { Comment } from "../Comment/Comment";
+import styles from "./Comments.module.scss";
 
 interface CommentsProps {
   commentsData: CommentWithUser[] | undefined;
@@ -14,19 +16,20 @@ export const Comments: FC<CommentsProps> = ({
 }) => {
   if (isLoading)
     return (
-      <>
-        <p>Skeleton for comment...</p>
-        <p>Skeleton for comment...</p>
-        <p>Skeleton for comment...</p>
-        <p>Skeleton for comment...</p>
-        <p>Skeleton for comment...</p>
-      </>
+      <div className={styles.container}>
+        <Loader variant="lg" />
+      </div>
     );
 
-  if (error) return <div>Error loading comments: {error}</div>;
+  if (error)
+    return (
+      <div className={styles.container}>Error loading comments: {error}</div>
+    );
 
   if (commentsData && commentsData.length === 0)
-    return <div>This post has no comments yet</div>;
+    return (
+      <div className={styles.container}>This post has no comments yet</div>
+    );
 
   if (commentsData)
     return (

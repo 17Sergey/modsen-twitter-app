@@ -1,3 +1,11 @@
 .likeButton {
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  > span {
+    margin-top: 2px;
+  }
 }

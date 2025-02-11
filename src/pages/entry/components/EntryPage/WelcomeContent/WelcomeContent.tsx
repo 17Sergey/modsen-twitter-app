@@ -26,9 +26,9 @@ export const WelcomeContent = () => (
       <AuthControls />
       <p className={styles.terms}>
         By signing up, you agree to the{" "}
-        <a href={ROUTES.ENTRY}>Terms of Service</a> and{" "}
-        <a href={ROUTES.ENTRY}>Privacy Policy</a>, including{" "}
-        <a href={ROUTES.ENTRY}>Cookie use</a>
+        <Link href={ROUTES.ENTRY}>Terms of Service</Link> and{" "}
+        <Link href={ROUTES.ENTRY}>Privacy Policy</Link>, including{" "}
+        <Link href={ROUTES.ENTRY}>Cookie use</Link>
       </p>
       <p className={styles.login}>
         Already have an account? <Link href={ROUTES.LOGIN}>Log in</Link>

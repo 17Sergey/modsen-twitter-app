@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/shared/components/Loader";
 import { FC } from "react";
 import { AsidePost } from "../AsidePost/AsidePost";
 import AsidePostImage from "../AsidePostImage";
@@ -21,11 +22,7 @@ export const AsidePosts: FC<AsidePostsProps> = ({
   if (isLoading)
     return (
       <>
-        <p>Skeleton for post...</p>
-        <p>Skeleton for post...</p>
-        <p>Skeleton for post...</p>
-        <p>Skeleton for post...</p>
-        <p>Skeleton for post...</p>
+        <Loader variant="md" />
       </>
     );
 

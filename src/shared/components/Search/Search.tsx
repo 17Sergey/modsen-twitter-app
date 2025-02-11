@@ -26,6 +26,7 @@ export const Search: FC<SearchProps> = ({
 
   return (
     <div className={styles.search}>
+      <Image src={SearchIcon} width={20} height={20} alt="Search" />
       <input
         type="text"
         placeholder={placeholder}
@@ -33,7 +34,6 @@ export const Search: FC<SearchProps> = ({
         onChange={(e) => setQuery(e.target.value)}
         className={styles.input}
       />
-      <Image src={SearchIcon} width={24} height={24} alt="Search" />
     </div>
   );
 };

@@ -1,14 +1,17 @@
-.saveButton {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.heading {
+  font-size: var(--font-size-md);
+  font-family: var(--font-roboto-serif);
 
-  &:hover {
-    background-color: #1a91da;
-  }
+  margin-bottom: var(--margin-base);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--margin-base) - var(--margin-sm));
+}
+
+.save {
+  margin-top: var(--margin-sm);
+  text-align: right;
 }

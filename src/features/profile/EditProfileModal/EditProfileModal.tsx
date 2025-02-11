@@ -1,4 +1,5 @@
 import { userAPI } from "@/entities/user/api/userAPI";
+import ActionButton from "@/shared/components/buttons/ActionButton";
 import InputField from "@/shared/components/InputField";
 import Modal from "@/shared/components/Modal";
 import { QUERY_KEYS } from "@/shared/constants/constants";
@@ -64,44 +65,48 @@ export const EditProfileModal: FC<EditProfileModalProps> = ({
   return (
     <Modal onClose={onClose}>
       <form onSubmit={handleSubmit(handleEditProfile)}>
-        <h2>Edit Profile</h2>
+        <h2 className={styles.heading}>Edit Profile</h2>
 
-        <InputField
-          type="text"
-          placeholder="Full Name"
-          register={register}
-          name="fullName"
-          error={errors.fullName?.message}
-        />
-        <InputField
-          type="text"
-          placeholder="Phone Number"
-          register={register}
-          name="phoneNumber"
-          error={errors.phoneNumber?.message}
-        />
-        <InputField
-          type="text"
-          placeholder="Bio"
-          register={register}
-          name="bio"
-          error={errors.bio?.message}
-        />
-        <InputField
-          type="text"
-          placeholder="Link"
-          register={register}
-          name="link"
-          error={errors.link?.message}
-        />
+        <div className={styles.fields}>
+          <InputField
+            type="text"
+            placeholder="Full Name"
+            register={register}
+            name="fullName"
+            error={errors.fullName?.message}
+          />
+          <InputField
+            type="text"
+            placeholder="Phone Number"
+            register={register}
+            name="phoneNumber"
+            error={errors.phoneNumber?.message}
+          />
+          <InputField
+            type="text"
+            placeholder="Bio"
+            register={register}
+            name="bio"
+            error={errors.bio?.message}
+          />
+          <InputField
+            type="text"
+            placeholder="Link"
+            register={register}
+            name="link"
+            error={errors.link?.message}
+          />
+        </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting || isPending}
-          className={styles.saveButton}
-        >
-          <span>{isPending ? "Saving..." : "Save Changes"}</span>
-        </button>
+        <div className={styles.save}>
+          <ActionButton
+            type="submit"
+            disabled={isSubmitting || isPending}
+            className={styles.saveButton}
+          >
+            <span>{isPending ? "Saving..." : "Save Changes"}</span>
+          </ActionButton>
+        </div>
       </form>
     </Modal>
   );

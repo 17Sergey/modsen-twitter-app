@@ -65,7 +65,7 @@ export const LikePost: FC<LikePostProps> = ({ postId, likes }) => {
         alt="Like post"
         className={styles.likeIcon}
       />
-      {likesCount}
+      <span>{likesCount}</span>
     </button>
   );
 };

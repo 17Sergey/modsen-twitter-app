@@ -18,7 +18,7 @@ export const FollowButton: FC<FollowButtonProps> = ({
       {...props}
     >
       {isFollowing ? "Unfollow" : "Follow"}
-      {isLoading && <span>spin</span>}
+      {isLoading && <span>ing...</span>}
     </Button>
   );
 };

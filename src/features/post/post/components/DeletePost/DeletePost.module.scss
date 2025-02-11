@@ -1,3 +1,20 @@
 .button {
   cursor: pointer;
 }
+
+.modalBox {
+  width: fit-content;
+}
+
+.modalContent {
+  display: grid;
+  place-items: center;
+
+  padding-top: var(--padding-base);
+}
+
+.modalButtons {
+  margin-top: var(--margin-base);
+  display: flex;
+  gap: var(--margin-base);
+}

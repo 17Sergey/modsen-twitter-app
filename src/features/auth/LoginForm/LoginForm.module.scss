@@ -10,6 +10,10 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    padding: 0;
+  }
 }
 
 .container {
@@ -29,7 +33,7 @@
 .heading {
   margin-bottom: var(--margin-base);
   text-align: start;
-  font-family: var(--font-secondary);
+  font-family: var(--font-roboto-serif);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-lg);
 }
@@ -40,9 +44,10 @@
   }
 }
 
-.submitButton {
+button.submitButton {
   width: 100%;
   margin-top: var(--margin-sm);
+  font-family: var(--font-roboto);
 }
 
 .google {

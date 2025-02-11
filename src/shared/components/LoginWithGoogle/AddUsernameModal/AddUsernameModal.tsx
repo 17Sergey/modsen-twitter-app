@@ -1,6 +1,11 @@
 import Modal from "@/shared/components/Modal";
+import { usernameValidation } from "@/shared/utils/usernameValidation";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import InputField from "../../InputField";
+import ActionButton from "../../buttons/ActionButton";
+import styles from "./AddUsernameModal.module.scss";
 
 interface AddUsernameModalProps {
   onClose: VoidFunction;
@@ -18,8 +23,13 @@ export const AddUsernameModal: FC<AddUsernameModalProps> = ({
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
-  } = useForm<FormData>();
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>({
+    defaultValues: {
+      username: "",
+    },
+    resolver: yupResolver(usernameValidation),
+  });
 
   const handleAddUsername = (data: FormData) => {
     onAdd(data.username);
@@ -28,16 +38,19 @@ export const AddUsernameModal: FC<AddUsernameModalProps> = ({
   return (
     <Modal onClose={onClose}>
       <form onSubmit={handleSubmit(handleAddUsername)}>
-        <p>Almost there! Provide a username</p>
-        <input
+        <p className={styles.heading}>Almost there! Provide a username</p>
+        <InputField
           type="text"
-          {...register("username", { required: true })}
           placeholder="Username"
+          register={register}
+          name="username"
+          error={errors.username?.message}
         />
-        <button type="submit" disabled={isSubmitting}>
-          Sign up
-        </button>
-        {isSubmitting && <div>Creating user...</div>}
+        <div className={styles.buttonContainer}>
+          <ActionButton type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Signing up..." : "Sign up"}
+          </ActionButton>
+        </div>
       </form>
     </Modal>
   );

@@ -10,7 +10,7 @@ import styles from "./LogoutButton.module.scss";
 export const LogoutButton: FC = () => {
   const router = useRouter();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: authAPI.logout,
     onSuccess: () => {
       toast.success("Logged out successfully");
@@ -27,7 +27,7 @@ export const LogoutButton: FC = () => {
 
   return (
     <PrimaryButton className={styles.logoutButton} onClick={handleLogout}>
-      Log out
+      {isPending ? "Pending..." : "Log out"}
     </PrimaryButton>
   );
 };

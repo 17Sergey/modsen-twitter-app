@@ -1,0 +1,18 @@
+.container {
+  margin-top: var(--margin-sm);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: var(--margin-sm);
+
+  background-color: var(--placeholder);
+  border-radius: var(--padding-sm);
+  padding: var(--padding-base);
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  max-height: 300px;
+}

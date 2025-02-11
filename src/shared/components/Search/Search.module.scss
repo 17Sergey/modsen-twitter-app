@@ -1,16 +1,16 @@
 .search {
   display: flex;
   align-items: center;
-  background: #f0f0f0;
+  background: var(--placeholder);
   border-radius: 20px;
-  padding: 10px;
+  padding: var(--padding-m);
 }
 
 .input {
   border: none;
   background: transparent;
   outline: none;
-  padding: 0 10px;
+  padding: 0 var(--padding-sm);
   flex-grow: 1;
-  font-size: 16px;
+  font-size: var(--font-size-base);
 }

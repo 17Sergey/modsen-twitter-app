@@ -2,6 +2,7 @@
 
 import Search from "@/shared/components/Search";
 import { FC, useState } from "react";
+import asideStyles from "../Aside/Aside.module.scss";
 import AsidePosts from "../AsidePosts";
 import { useSearchPosts, useSuggestedPosts } from "./hooks";
 import styles from "./PostsWithSearch.module.scss";
@@ -41,13 +42,13 @@ export const PostsWithSearch: FC<PostsWithSearchProps> = ({ username }) => {
   }
 
   return (
-    <div>
+    <div className={asideStyles.container}>
       <Search
         onQueryChanged={handleQueryChange}
         isDebounced={true}
         placeholder={"Search posts..."}
       />
-      <div className={styles.aside}>
+      <div className={asideStyles.content}>
         <span className={styles.suggest}>
           {isQueryEmpty ? "You might like" : "Search results"}
         </span>

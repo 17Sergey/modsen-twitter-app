@@ -3,6 +3,8 @@ import UserFullname from "@/entities/user/components/UserFullname";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import Username from "@/entities/user/components/Username";
 import FormattedDate from "@/shared/components/FormattedDate";
+import { ROUTES } from "@/shared/constants/constants";
+import Link from "next/link";
 import { FC } from "react";
 import DeletePost from "../DeletePost";
 import LikePost from "../LikePost";
@@ -25,11 +27,18 @@ export const Post: FC<PostProps> = ({ user, post }) => {
 
   return (
     <div className={styles.post}>
-      <UserImg src={profileImg} />
+      <Link
+        href={`${ROUTES.PROFILE}/${username}`}
+        className={styles.postImageLink}
+      >
+        <UserImg src={profileImg} />
+      </Link>
       <div>
         <div className={styles.meta}>
           <UserFullname fullName={fullName} />
-          <Username username={username} />
+          <Link href={`${ROUTES.PROFILE}/${username}`}>
+            <Username username={username} />
+          </Link>
           <FormattedDate date={new Date(createdAt)} />
         </div>
 

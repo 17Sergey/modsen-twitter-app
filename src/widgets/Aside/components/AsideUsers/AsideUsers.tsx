@@ -1,5 +1,6 @@
 "use client";
 
+import Loader from "@/shared/components/Loader";
 import { FC } from "react";
 import { AsideUser } from "../AsideUser/AsideUser";
 
@@ -17,11 +18,7 @@ export const AsideUsers: FC<AsideUsersProps> = ({
   if (isLoading)
     return (
       <>
-        <p>Skeleton for user...</p>
-        <p>Skeleton for user...</p>
-        <p>Skeleton for user...</p>
-        <p>Skeleton for user...</p>
-        <p>Skeleton for user...</p>
+        <Loader variant="md" />
       </>
     );
 

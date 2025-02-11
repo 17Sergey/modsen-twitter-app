@@ -1,4 +1,12 @@
-.followButton {
+button.followButton {
   background-color: var(--secondary-color);
   color: var(--white-color);
+
+  font-size: var(--font-size-sm);
+  padding: var(--padding-sm) var(--padding-m);
+  min-height: auto;
+
+  &:hover {
+    color: var(--text-default);
+  }
 }

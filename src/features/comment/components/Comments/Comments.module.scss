@@ -1,14 +1,6 @@
-.saveButton {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  margin-top: auto;
-  cursor: pointer;
-  transition: background-color 0.2s;
+.container {
+  padding: 0 var(--padding-base);
 
-  &:hover {
-    background-color: #1a91da;
-  }
+  display: flex;
+  justify-content: center;
 }

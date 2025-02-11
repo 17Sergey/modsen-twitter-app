@@ -1,7 +1,14 @@
 .addPost {
   margin: var(--margin-md) 0;
-  padding: var(--padding-base) 0;
+  padding: var(--padding-base) var(--padding-sm);
+
   border: 1px solid var(--border-color);
   border-left: none;
   border-right: none;
+}
+
+.loader {
+  margin-top: var(--margin-md);
+  display: flex;
+  justify-content: center;
 }

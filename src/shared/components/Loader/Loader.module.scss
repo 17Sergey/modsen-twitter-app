@@ -1,0 +1,16 @@
+.loader {
+  display: flex;
+  align-items: center;
+}
+
+.sm {
+  width: var(--width-icon-xs);
+}
+
+.md {
+  width: var(--width-icon-base);
+}
+
+.lg {
+  width: var(--width-icon-lg);
+}

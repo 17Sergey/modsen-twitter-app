@@ -1,6 +1,5 @@
 import { authAPI } from "@/pages/entry/api/auth";
 import TwitterIcon from "@/shared/assets/twitter.svg";
-import LinkButton from "@/shared/components/buttons/LinkButton";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
 import Select from "@/shared/components/Select";
@@ -9,6 +8,7 @@ import { signupValidation } from "@/shared/utils/signupValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
@@ -119,7 +119,9 @@ export const SignupForm = () => {
 
       <div className={styles.buttons}>
         <PrimaryButton type="submit">Next</PrimaryButton>
-        <LinkButton href={ROUTES.LOGIN}>Go to Log In</LinkButton>
+        <div className={styles.link}>
+          <Link href={ROUTES.LOGIN}>Log in to Twitter</Link>
+        </div>
       </div>
     </form>
   );

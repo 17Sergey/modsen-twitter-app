@@ -19,7 +19,7 @@
   margin-bottom: var(--margin-base);
   text-align: start;
 
-  font-family: var(--font-secondary);
+  font-family: var(--font-roboto-serif);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-lg);
 }
@@ -41,9 +41,11 @@
 
 .buttons {
   margin-top: var(--margin-md);
+
   & > * {
     width: 100%;
     margin: var(--margin-sm) 0;
+    font-family: var(--font-roboto);
   }
 }
 
@@ -57,5 +59,15 @@
 
   & > * {
     flex: 1;
+  }
+}
+
+.link {
+  margin-top: var(--margin-base);
+  color: var(--primary-color);
+  text-align: right;
+
+  &:hover {
+    text-decoration: underline;
   }
 }

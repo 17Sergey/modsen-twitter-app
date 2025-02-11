@@ -1,10 +1,13 @@
 import { FC } from "react";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
+import UserFullname from "@/entities/user/components/UserFullname";
 import UserImg from "@/entities/user/components/UserImg";
+import Username from "@/entities/user/components/Username";
 import EditProfileModal from "@/features/profile/EditProfileModal";
 import FollowUser from "@/features/user/FollowUser";
 import CoverImg from "@/shared/assets/images/profile-cover.jpg";
+import Button from "@/shared/components/buttons/Button";
 import { QUERY_KEYS } from "@/shared/constants/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useQueryClient } from "@tanstack/react-query";
@@ -35,44 +38,50 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
   };
 
   return (
-    <div className={styles.profile}>
-      <Image
-        className={styles.coverImage}
-        src={user?.coverImg || CoverImg}
-        alt={"Profile cover"}
-      />
-      <div className={styles.header}>
-        <UserImg src={user?.profileImg} className={styles.profileImage} />
+    <section>
+      <div className={styles.overview}>
+        <UserFullname fullName={user?.fullName} />
+        <p className={styles.tweetsCount}>{user?.postsCount || 0} Tweets</p>
+      </div>
+      <div>
+        <Image
+          className={styles.coverImage}
+          src={user?.coverImg || CoverImg}
+          alt={"Profile cover"}
+        />
         <div className={styles.profileInfo}>
-          <h2 className={styles.name}>{user?.fullName}</h2>
-          <span className={styles.username}>@{user?.username}</span>
-          <p className={styles.position}>{user?.email}</p>
-          <p className={styles.position}>{user?.bio}</p>
-          <p className={styles.position}>{user?.link}</p>
+          <div className={styles.profileData}>
+            <div className={styles.left}>
+              <UserImg src={user?.profileImg} className={styles.profileImage} />
+              <UserFullname fullName={user?.fullName} className={styles.name} />
+              <Username username={user?.username} className={styles.username} />
+              {user?.bio && <p className={styles.bio}>{user?.bio}</p>}
+              {user?.link && <p className={styles.link}>Link: {user?.link}</p>}
+            </div>
+            <div className={styles.right}>
+              {isMyProfile && (
+                <Button className={styles.editProfile} onClick={openEditModal}>
+                  Edit profile
+                </Button>
+              )}
+              {isEditProfile && user && (
+                <EditProfileModal user={user} onClose={closeEditModal} />
+              )}
+              {!isMyProfile && (
+                <FollowUser
+                  userId={user.id}
+                  followers={user.followers}
+                  onSuccess={handleFollowSuccess}
+                />
+              )}
+            </div>
+          </div>
           <div className={styles.stats}>
             <span>{user?.followers?.length || 0} Followers</span>
             <span>{user?.following?.length || 0} Following</span>
           </div>
-          {isMyProfile && (
-            <button className={styles.editProfile} onClick={openEditModal}>
-              Edit profile
-            </button>
-          )}
-          {isEditProfile && user && (
-            <EditProfileModal user={user} onClose={closeEditModal} />
-          )}
-          {!isMyProfile && (
-            <FollowUser
-              userId={user.id}
-              followers={user.followers}
-              onSuccess={handleFollowSuccess}
-            />
-          )}
         </div>
       </div>
-      <div className={styles.tweetsCount}>
-        <span>{user?.postsCount || 0} Tweets</span>
-      </div>
-    </div>
+    </section>
   );
 };

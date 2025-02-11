@@ -1,11 +1,15 @@
 .post {
   margin-top: var(--margin-base);
-  padding-bottom: var(--margin-base);
+  padding: 0 var(--margin-base) var(--margin-base) var(--margin-sm);
 
   display: flex;
   gap: var(--margin-sm);
 
   border-bottom: 1px solid var(--border-color);
+}
+
+.postImageLink {
+  flex-shrink: 0;
 }
 
 .meta {

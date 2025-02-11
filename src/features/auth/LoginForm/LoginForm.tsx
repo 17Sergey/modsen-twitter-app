@@ -95,7 +95,7 @@ export const LoginForm = () => {
           </div>
 
           <PrimaryButton type="submit" className={styles.submitButton}>
-            Log In
+            Log in
           </PrimaryButton>
 
           <div className={styles.google} onClick={handleGoogleLogin}>

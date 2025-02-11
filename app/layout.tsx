@@ -9,12 +9,14 @@ const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
+  preload: true,
 });
 
 const robotoSerif = Roboto_Serif({
   variable: "--font-roboto-serif",
   subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
+  preload: true,
 });
 
 export const metadata: Metadata = {

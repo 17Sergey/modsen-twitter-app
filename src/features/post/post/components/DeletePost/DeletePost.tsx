@@ -3,6 +3,8 @@ import { FC } from "react";
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import TrashIcon from "@/shared/assets/trash.svg";
+import ActionButton from "@/shared/components/buttons/ActionButton";
+import SecondaryButton from "@/shared/components/buttons/SecondaryButton";
 import Modal from "@/shared/components/Modal";
 import { QUERY_KEYS } from "@/shared/constants/constants";
 import { useModal } from "@/shared/hooks/useModal";
@@ -23,7 +25,7 @@ export const DeletePost: FC<DeletePostProps> = ({ postId, postOwnerId }) => {
 
   const queryClient = useQueryClient();
 
-  const { mutate: deletePostMutation } = useMutation({
+  const { mutate: deletePostMutation, isPending } = useMutation({
     mutationFn: postAPI.deletePost,
     onSuccess: () => {
       toast.success("Post deleted successfullly");
@@ -47,10 +49,16 @@ export const DeletePost: FC<DeletePostProps> = ({ postId, postOwnerId }) => {
         <Image src={TrashIcon} width={24} height={24} alt="Delete" />
       </button>
       {isOpen && (
-        <Modal onClose={closeModal}>
-          <div>Are you sure you want to delele the post?</div>
-          <button onClick={handleConfirm}>Delete</button>
-          <button onClick={closeModal}>Cancel</button>
+        <Modal onClose={closeModal} modalboxClassName={styles.modalBox}>
+          <div className={styles.modalContent}>
+            <div>Are you sure you want to delele the post?</div>
+            <div className={styles.modalButtons}>
+              <SecondaryButton onClick={closeModal}>Cancel</SecondaryButton>
+              <ActionButton onClick={handleConfirm}>
+                {isPending ? "Deleting..." : "Delete"}
+              </ActionButton>
+            </div>
+          </div>
         </Modal>
       )}
     </span>
