@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FC } from "react";

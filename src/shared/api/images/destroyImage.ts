@@ -1,4 +1,4 @@
-import { API_ROUTES } from "@/shared/constants/constants";
+import { API_ROUTES } from "@/shared/constants";
 
 export const destroyImage = async (img: string) => {
   const response = await fetch(API_ROUTES.DESTROY_IMAGE, {

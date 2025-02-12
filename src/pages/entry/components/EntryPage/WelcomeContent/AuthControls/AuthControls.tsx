@@ -2,7 +2,7 @@
 
 import LinkButton from "@/shared/components/buttons/LinkButton";
 import LoginWithGoogle from "@/shared/components/LoginWithGoogle";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import styles from "./AuthControls.module.scss";
 
 export const AuthControls = () => (

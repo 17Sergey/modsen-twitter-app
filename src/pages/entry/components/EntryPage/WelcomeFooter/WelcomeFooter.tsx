@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Link from "next/link";
 import styles from "./WelcomeFooter.module.scss";
 

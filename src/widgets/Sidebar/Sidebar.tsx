@@ -3,7 +3,7 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 
 import TwitterLogo from "@/shared/assets/twitter.svg";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Image from "next/image";
 import Link from "next/link";
 import LogoutButton from "./LogoutButton";

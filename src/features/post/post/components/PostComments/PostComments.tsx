@@ -2,7 +2,7 @@ import { commentsAPI } from "@/entities/comment/api";
 import Comments from "@/features/comment/components/Comments";
 import CommentIcon from "@/shared/assets/comment.svg";
 import Modal from "@/shared/components/Modal";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";

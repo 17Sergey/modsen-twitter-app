@@ -3,7 +3,7 @@ import UserFullname from "@/entities/user/components/UserFullname";
 import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import Username from "@/entities/user/components/Username";
 import FormattedDate from "@/shared/components/FormattedDate";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Link from "next/link";
 import { FC } from "react";
 import DeletePost from "../DeletePost";

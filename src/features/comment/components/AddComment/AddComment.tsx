@@ -6,7 +6,7 @@ import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import AdvancedTextarea from "@/shared/components/AdvancedTextarea";
 import { useAdvancedTextarea } from "@/shared/components/AdvancedTextarea/useAdvancedTextarea";
 import ActionButton from "@/shared/components/buttons/ActionButton";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import styles from "./AddComment.module.scss";

@@ -1,5 +1,5 @@
 import { authAPI } from "@/pages/entry/api/auth";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import { useMutation } from "@tanstack/react-query";
 import { User } from "firebase/auth";
 import { useRouter } from "next/navigation";

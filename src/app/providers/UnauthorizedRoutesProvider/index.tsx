@@ -1,6 +1,6 @@
 "use client";
 
-import { ROUTES, UNAUTHORIZED_ROUTES } from "@/shared/constants/constants";
+import { ROUTES, UNAUTHORIZED_ROUTES } from "@/shared/constants";
 import { usePathname, useRouter } from "next/navigation";
 import { FC, PropsWithChildren, useEffect } from "react";
 import { useAuth } from "../AuthProvider/useAuth";

@@ -4,6 +4,8 @@ export const THEME_NAMES = {
   DARK: "dark",
 };
 
+export const BREAKPOINT_FOR_BURGER_MENU = 768; // Referebnces _breakpoints.scss in styles
+
 export const ROUTES = {
   ENTRY: "/",
   LOGIN: "/login",

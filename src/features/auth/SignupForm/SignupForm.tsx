@@ -3,7 +3,7 @@ import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
 import Select from "@/shared/components/Select";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import { signupValidation } from "@/shared/utils/signupValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";

@@ -6,7 +6,7 @@ import TrashIcon from "@/shared/assets/trash.svg";
 import ActionButton from "@/shared/components/buttons/ActionButton";
 import SecondaryButton from "@/shared/components/buttons/SecondaryButton";
 import Modal from "@/shared/components/Modal";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";

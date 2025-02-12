@@ -1,4 +1,4 @@
-import { API_ROUTES } from "@/shared/constants/constants";
+import { API_ROUTES } from "@/shared/constants";
 
 export const uploadImage = async (img: string) => {
   const response = await fetch(API_ROUTES.UPLOAD_IMAGE, {

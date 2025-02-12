@@ -2,7 +2,7 @@
 
 import NotFoundImage from "@/shared/assets/images/notfound.png";
 import LinkButton from "@/shared/components/buttons/LinkButton";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Image from "next/image";
 import styles from "./NotFoundPage.module.scss";
 

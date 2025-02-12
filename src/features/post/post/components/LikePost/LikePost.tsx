@@ -6,7 +6,7 @@ import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import LikedIcon from "@/shared/assets/like/like-fill.svg";
 import LikeIcon from "@/shared/assets/like/like.svg";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
 import toast from "react-hot-toast";

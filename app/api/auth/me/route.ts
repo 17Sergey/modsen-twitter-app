@@ -1,7 +1,7 @@
 import { userRepository } from "@/entities/user/api/UserRepository";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "@/shared/constants/constants";
+import { JWT_SECRET } from "@/shared/constants";
 import { postRepository } from "@/entities/post/api/PostRepository";
 
 export async function GET(req: NextRequest) {

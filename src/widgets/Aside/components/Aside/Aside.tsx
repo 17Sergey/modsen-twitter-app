@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import { usePathname } from "next/navigation";
 import PostsWithSearch from "../PostsWithSearch";
 import UsersWithSearch from "../UsersWithSearch";

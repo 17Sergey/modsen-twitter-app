@@ -2,7 +2,7 @@ import { userAPI } from "@/entities/user/api/userAPI";
 import ActionButton from "@/shared/components/buttons/ActionButton";
 import InputField from "@/shared/components/InputField";
 import Modal from "@/shared/components/Modal";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { editProfileValidation } from "@/shared/utils/editProfileValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

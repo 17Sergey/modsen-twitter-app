@@ -1,6 +1,6 @@
 "use client";
 
-import { THEME_NAMES } from "@/shared/constants/constants";
+import { THEME_NAMES } from "@/shared/constants";
 import { createContext } from "react";
 
 interface ContextProps {

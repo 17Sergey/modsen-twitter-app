@@ -5,7 +5,7 @@ import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
 import LoginWithGoogle from "@/shared/components/LoginWithGoogle";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import { loginValidation } from "@/shared/utils/loginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "@/shared/constants/constants";
+import { JWT_SECRET } from "@/shared/constants";
 
 export async function POST(req: NextRequest) {
   const { payload } = await req.json();

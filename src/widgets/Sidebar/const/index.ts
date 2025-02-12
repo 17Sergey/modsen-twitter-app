@@ -6,7 +6,7 @@ import messagesIcon from "@/shared/assets/sidebar/messages.svg";
 import moreIcon from "@/shared/assets/sidebar/more.svg";
 import notificationsIcon from "@/shared/assets/sidebar/notifications.svg";
 import profileIcon from "@/shared/assets/sidebar/profile.svg";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 
 export const SIDEBAR_ITEMS = [
   { label: "Home", icon: homeIcon, route: ROUTES.FEED },

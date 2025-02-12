@@ -3,7 +3,7 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import Posts from "@/features/post/posts/components/Posts";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 import { FC, useEffect, useState } from "react";
 

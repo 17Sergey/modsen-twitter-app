@@ -8,7 +8,7 @@ import EditProfileModal from "@/features/profile/EditProfileModal";
 import FollowUser from "@/features/user/FollowUser";
 import CoverImg from "@/shared/assets/images/profile-cover.jpg";
 import Button from "@/shared/components/buttons/Button";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";

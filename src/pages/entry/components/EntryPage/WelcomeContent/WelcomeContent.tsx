@@ -1,7 +1,7 @@
 "use client";
 
 import TwitterIcon from "@/shared/assets/twitter.svg";
-import { ROUTES } from "@/shared/constants/constants";
+import { ROUTES } from "@/shared/constants";
 import Image from "next/image";
 import Link from "next/link";
 import AuthControls from "./AuthControls";

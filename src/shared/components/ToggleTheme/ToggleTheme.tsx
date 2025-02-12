@@ -1,5 +1,5 @@
 import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
-import { THEME_NAMES } from "@/shared/constants/constants";
+import { THEME_NAMES } from "@/shared/constants";
 import styles from "./ToggleTheme.module.scss"; // Импортируйте SCSS модуль
 
 export const ToggleTheme = () => {

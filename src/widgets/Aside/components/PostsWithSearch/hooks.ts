@@ -1,6 +1,6 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
-import { QUERY_KEYS } from "@/shared/constants/constants";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 
 interface HookOptions {

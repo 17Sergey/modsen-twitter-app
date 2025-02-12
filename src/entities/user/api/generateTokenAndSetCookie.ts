@@ -1,4 +1,4 @@
-import { API_ROUTES } from "@/shared/constants/constants";
+import { API_ROUTES } from "@/shared/constants";
 
 export const generateTokenAndSetCookie = async (user: UserModel) => {
   fetch(API_ROUTES.SET_TOKEN, {

@@ -1,0 +1,76 @@
+@use "@/shared/styles/_breakpoints.scss" as *;
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--padding-base);
+  background-color: var(--background-color);
+}
+
+.twitterLogo {
+  width: var(--width-icon-base);
+  height: var(--width-icon-base);
+}
+
+.burgerIcon {
+  width: var(--width-icon-base);
+  height: var(--width-icon-base);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  cursor: pointer;
+  background-color: var(--background-neutral);
+  opacity: 0.6;
+}
+
+.burgerMenu {
+  position: fixed;
+  z-index: 200;
+  top: 0;
+  right: -100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+
+  max-height: 100svh;
+  overflow-y: auto;
+
+  padding: var(--padding-base);
+
+  transition: all 0.3s ease;
+  background-color: var(--background-color);
+}
+
+.burgerMenuOpen {
+  right: 0%;
+}
+
+.closeButton {
+  align-self: flex-end;
+}
+
+.closeIcon {
+  width: var(--width-icon-base);
+  height: var(--width-icon-base);
+}
+
+.menuContent {
+  & > * {
+    width: 100%;
+  }
+}
