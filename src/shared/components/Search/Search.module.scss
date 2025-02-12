@@ -14,3 +14,16 @@
   flex-grow: 1;
   font-size: var(--font-size-base);
 }
+
+.dark {
+  background-color: transparent;
+  border: 1px solid var(--placeholder);
+
+  &:focus-within {
+    border-color: var(--primary-color);
+  }
+
+  & > input {
+    color: var(--white-color);
+  }
+}

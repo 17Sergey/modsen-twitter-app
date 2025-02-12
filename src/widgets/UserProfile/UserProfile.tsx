@@ -8,6 +8,7 @@ import EditProfileModal from "@/features/profile/EditProfileModal";
 import FollowUser from "@/features/user/FollowUser";
 import CoverImg from "@/shared/assets/images/profile-cover.jpg";
 import Button from "@/shared/components/buttons/Button";
+import ToggleTheme from "@/shared/components/ToggleTheme";
 import { QUERY_KEYS } from "@/shared/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useQueryClient } from "@tanstack/react-query";
@@ -39,10 +40,13 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
 
   return (
     <section>
-      <div className={styles.overview}>
-        <UserFullname fullName={user?.fullName} />
-        <p className={styles.tweetsCount}>{user?.postsCount || 0} Tweets</p>
-      </div>
+      <header className={styles.header}>
+        <div className={styles.overview}>
+          <UserFullname fullName={user?.fullName} />
+          <p className={styles.tweetsCount}>{user?.postsCount || 0} Tweets</p>
+        </div>
+        <ToggleTheme />
+      </header>
       <div>
         <Image
           className={styles.coverImage}

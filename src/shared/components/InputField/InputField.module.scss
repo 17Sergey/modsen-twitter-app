@@ -17,8 +17,12 @@
   input {
     width: 100%;
     padding: var(--padding-base);
+
+    background-color: transparent;
+    color: var(--text-default);
     border: 1px solid #ccc;
     border-radius: 4px;
+
     font-size: var(--font-size-base);
     margin-bottom: var(--margin-base);
 

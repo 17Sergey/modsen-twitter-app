@@ -1,6 +1,8 @@
 "use client";
 
+import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import Search from "@/shared/components/Search";
+import { THEME_NAMES } from "@/shared/constants";
 import { useState } from "react";
 import asideStyles from "../Aside/Aside.module.scss";
 import AsideUsers from "../AsideUsers";
@@ -8,6 +10,8 @@ import { useSearchUsers, useSuggestedUsers } from "./hooks";
 import styles from "./UsersWithSearch.module.scss";
 
 export const UsersWithSearch = () => {
+  const { themeName } = useTheme();
+
   const [query, setQuery] = useState("");
   const isQueryEmpty = query === "";
 
@@ -44,7 +48,9 @@ export const UsersWithSearch = () => {
         isDebounced={true}
         placeholder={"Search users..."}
       />
-      <div className={asideStyles.content}>
+      <div
+        className={`${asideStyles.content} ${themeName === THEME_NAMES.DARK && asideStyles.darkContent}`}
+      >
         <span className={styles.suggest}>
           {isQueryEmpty ? "You might like" : "Search results"}
         </span>

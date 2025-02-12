@@ -10,3 +10,13 @@ button.followButton {
     color: var(--text-default);
   }
 }
+
+button.dark {
+  background-color: var(--white-color);
+  color: var(--background-color);
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid var(--white-color);
+  }
+}

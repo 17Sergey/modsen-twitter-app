@@ -3,9 +3,11 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import Posts from "@/features/post/posts/components/Posts";
+import ActionButton from "@/shared/components/buttons/ActionButton";
 import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 import { FC, useEffect, useState } from "react";
+import styles from "./FeedPosts.module.scss";
 
 export const FeedPosts: FC = () => {
   const { user } = useAuth();
@@ -28,6 +30,8 @@ export const FeedPosts: FC = () => {
     retry: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
+    refetchOnMount: false,
+    enabled: false,
   });
 
   const handleFetchMore = () => {
@@ -36,7 +40,7 @@ export const FeedPosts: FC = () => {
 
   useEffect(() => {
     refetch();
-  }, [page, refetch]);
+  }, [page]);
 
   useEffect(() => {
     const newPosts = postsData?.posts || [];
@@ -55,7 +59,9 @@ export const FeedPosts: FC = () => {
       />
       {isRefetching && <span>Refetching...</span>}
       {!isRefetching && postsData?.hasMore && (
-        <button onClick={handleFetchMore}>Fetch more</button>
+        <div className={styles.more}>
+          <ActionButton onClick={handleFetchMore}>Fetch more</ActionButton>
+        </div>
       )}
     </>
   );

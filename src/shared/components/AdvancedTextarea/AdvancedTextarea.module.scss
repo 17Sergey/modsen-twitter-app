@@ -11,6 +11,9 @@
   font-size: var(--font-size-md);
   font-family: var(--font-primary);
 
+  background-color: transparent;
+  color: var(--text-default);
+
   &::placeholder {
     color: var(--text-neutral);
   }

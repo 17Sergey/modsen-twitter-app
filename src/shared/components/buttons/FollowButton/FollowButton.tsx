@@ -1,3 +1,5 @@
+import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
+import { THEME_NAMES } from "@/shared/constants";
 import { ComponentProps, FC } from "react";
 import Button from "../Button";
 import styles from "./FollowButton.module.scss";
@@ -12,9 +14,11 @@ export const FollowButton: FC<FollowButtonProps> = ({
   isLoading,
   ...props
 }) => {
+  const { themeName } = useTheme();
+
   return (
     <Button
-      className={`${styles.followButton} ${isFollowing ? styles.following : styles.notFollowing}`}
+      className={`${styles.followButton} ${isFollowing ? styles.following : styles.notFollowing} ${themeName === THEME_NAMES.DARK && styles.dark}`}
       {...props}
     >
       {isFollowing ? "Unfollow" : "Follow"}

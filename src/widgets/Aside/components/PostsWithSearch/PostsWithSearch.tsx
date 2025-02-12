@@ -6,12 +6,16 @@ import asideStyles from "../Aside/Aside.module.scss";
 import AsidePosts from "../AsidePosts";
 import { useSearchPosts, useSuggestedPosts } from "./hooks";
 import styles from "./PostsWithSearch.module.scss";
+import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
+import { THEME_NAMES } from "@/shared/constants";
 
 interface PostsWithSearchProps {
   username: string;
 }
 
 export const PostsWithSearch: FC<PostsWithSearchProps> = ({ username }) => {
+  const { themeName } = useTheme();
+
   const [query, setQuery] = useState("");
   const isQueryEmpty = query === "";
 
@@ -48,7 +52,9 @@ export const PostsWithSearch: FC<PostsWithSearchProps> = ({ username }) => {
         isDebounced={true}
         placeholder={"Search posts..."}
       />
-      <div className={asideStyles.content}>
+      <div
+        className={`${asideStyles.content} ${themeName === THEME_NAMES.DARK && asideStyles.darkContent}`}
+      >
         <span className={styles.suggest}>
           {isQueryEmpty ? "You might like" : "Search results"}
         </span>
