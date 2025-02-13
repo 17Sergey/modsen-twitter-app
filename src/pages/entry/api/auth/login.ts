@@ -9,12 +9,16 @@ interface LoginParams {
 export const login = async ({ usernameOrEmail, password }: LoginParams) => {
   const isEmail = usernameOrEmail.includes("@");
 
-  let existingUser: UserModel | undefined = undefined;
+  let existingUser;
 
   if (isEmail) {
-    existingUser = await userRepository.getUserByEmail(usernameOrEmail);
+    existingUser = (await userRepository.getUserByEmail(
+      usernameOrEmail,
+    )) as UserWithId;
   } else {
-    existingUser = await userRepository.getUserByUsername(usernameOrEmail);
+    existingUser = (await userRepository.getUserByUsername(
+      usernameOrEmail,
+    )) as UserWithId;
   }
 
   loginChecks(existingUser, password);
@@ -26,7 +30,7 @@ export const login = async ({ usernameOrEmail, password }: LoginParams) => {
   return existingUser;
 };
 
-const loginChecks = (user: UserModel | undefined, password: string) => {
+const loginChecks = (user: UserWithId | undefined, password: string) => {
   if (!user) throw new Error("User with this credentials was not found");
 
   if (user.isSocialAuth)

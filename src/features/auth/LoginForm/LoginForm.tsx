@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { authAPI } from "@/pages/entry/api/auth";
 import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
@@ -37,11 +38,14 @@ export const LoginForm = () => {
 
   const router = useRouter();
 
+  const { setCurrentUser } = useAuth();
+
   const { mutate: loginMutation } = useMutation({
     mutationFn: authAPI.login,
-    onSuccess: (user: UserModel | undefined) => {
+    onSuccess: (user: UserWithId | undefined) => {
       if (user) {
         toast.success("Logged in successfully");
+        setCurrentUser(user);
         router.replace(ROUTES.FEED);
       }
     },

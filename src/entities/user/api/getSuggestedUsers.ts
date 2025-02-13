@@ -1,9 +1,6 @@
 import { userRepository } from "./UserRepository";
 
 export const getSuggestedUsers = async (username: string) => {
-  if (!username) {
-    alert("empty:" + username);
-  }
   const user = (await userRepository.getUserByUsername(username)) as UserWithId;
 
   if (!user)

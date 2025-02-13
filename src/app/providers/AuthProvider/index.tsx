@@ -45,30 +45,23 @@
 
 "use client";
 
-import { getMe } from "@/pages/entry/api/auth/getMe";
+import { authAPI } from "@/pages/entry/api/auth";
 import Loader from "@/shared/components/Loader";
+import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { FC, PropsWithChildren } from "react";
-import { AuthContext, UserType } from "./context";
 import styles from "./AuthProvider.module.scss";
+import { AuthContext, UserType } from "./context";
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
-  // const router = useRouter();
+  const router = useRouter();
   // const pathname = usePathname();
 
   const { data: fetchedUser, isLoading } = useQuery<UserType>({
-    queryKey: ["user"],
-    queryFn: getMe,
+    queryKey: [QUERY_KEYS.USER_AUTH],
+    queryFn: authAPI.getMe,
     retry: false,
-    // onSuccess: (fetchedUser) => {
-    //   if (fetchedUser && UNAUTHORIZED_ROUTES.includes(pathname || "")) {
-    //     console.log("Redirecting to feed from unauthorized route");
-    //     router.replace(ROUTES.FEED);
-    //   }
-    // },
-    // onError: (error) => {
-    //   console.error("Failed to fetch user:", error);
-    // },
   });
 
   const setCurrentUser = (newUser: UserType) => {

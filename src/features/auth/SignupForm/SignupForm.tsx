@@ -1,3 +1,4 @@
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { authAPI } from "@/pages/entry/api/auth";
 import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
@@ -41,12 +42,15 @@ export const SignupForm = () => {
 
   const router = useRouter();
 
+  const { setCurrentUser } = useAuth();
+
   const { mutate: signupMutation } = useMutation({
     mutationFn: authAPI.signup,
-    onSuccess: (user: UserWithId | undefined) => {
+    onSuccess: (user) => {
       console.log(user);
 
       toast.success("Signed up successfully!");
+      setCurrentUser(user);
       router.replace(ROUTES.FEED);
     },
     onError: (error) => {
