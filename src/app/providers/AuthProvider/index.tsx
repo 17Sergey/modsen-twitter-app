@@ -46,9 +46,11 @@
 "use client";
 
 import { getMe } from "@/pages/entry/api/auth/getMe";
+import Loader from "@/shared/components/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { FC, PropsWithChildren } from "react";
 import { AuthContext, UserType } from "./context";
+import styles from "./AuthProvider.module.scss";
 
 const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   // const router = useRouter();
@@ -75,7 +77,12 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const user = fetchedUser ? fetchedUser : null;
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <Loader variant="lg" />
+      </div>
+    );
 
   return (
     <AuthContext.Provider value={{ user, setCurrentUser }}>

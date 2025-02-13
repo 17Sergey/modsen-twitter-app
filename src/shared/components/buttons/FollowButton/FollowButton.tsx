@@ -12,13 +12,14 @@ interface FollowButtonProps extends ComponentProps<"button"> {
 export const FollowButton: FC<FollowButtonProps> = ({
   isFollowing,
   isLoading,
+  className,
   ...props
 }) => {
   const { themeName } = useTheme();
 
   return (
     <Button
-      className={`${styles.followButton} ${isFollowing ? styles.following : styles.notFollowing} ${themeName === THEME_NAMES.DARK && styles.dark}`}
+      className={`${styles.followButton} ${isFollowing ? styles.following : styles.notFollowing} ${themeName === THEME_NAMES.DARK && styles.dark} ${className}`}
       {...props}
     >
       {isFollowing ? "Unfollow" : "Follow"}

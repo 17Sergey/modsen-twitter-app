@@ -1,4 +1,3 @@
-// utils/validation.ts
 import { MIN_USER_AGE } from "@/features/auth/SignupForm/constants";
 import * as Yup from "yup";
 

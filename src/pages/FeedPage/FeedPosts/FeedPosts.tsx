@@ -4,6 +4,7 @@ import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { postAPI } from "@/entities/post/api";
 import Posts from "@/features/post/posts/components/Posts";
 import ActionButton from "@/shared/components/buttons/ActionButton";
+import Loader from "@/shared/components/Loader";
 import { QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 import { FC, useEffect, useState } from "react";
@@ -57,7 +58,11 @@ export const FeedPosts: FC = () => {
         error={error && error.message}
         noDataMessage={"No posts to show yet. Follow someone!"}
       />
-      {isRefetching && <span>Refetching...</span>}
+      {isRefetching && (
+        <div className={styles.loader}>
+          <Loader variant="md" />
+        </div>
+      )}
       {!isRefetching && postsData?.hasMore && (
         <div className={styles.more}>
           <ActionButton onClick={handleFetchMore}>Fetch more</ActionButton>

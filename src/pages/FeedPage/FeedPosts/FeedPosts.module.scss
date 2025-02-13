@@ -2,3 +2,9 @@
   text-align: center;
   margin: var(--margin-base) 0;
 }
+
+.loader {
+  margin: var(--margin-base) 0 var(--margin-md);
+  display: flex;
+  justify-content: center;
+}

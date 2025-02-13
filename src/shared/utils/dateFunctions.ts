@@ -9,19 +9,24 @@ export const formatPostDate = (createdAt: Date) => {
   const timeDifferenceInHours = Math.floor(timeDifferenceInMinutes / 60);
   const timeDifferenceInDays = Math.floor(timeDifferenceInHours / 24);
 
-  if (timeDifferenceInDays > 1) {
-    return createdAtDate.toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-    });
-  } else if (timeDifferenceInDays === 1) {
-    return "1d";
-  } else if (timeDifferenceInHours >= 1) {
-    return `${timeDifferenceInHours}h`;
-  } else if (timeDifferenceInMinutes >= 1) {
-    return `${timeDifferenceInMinutes}m`;
-  } else {
-    return "Just now";
+  switch (true) {
+    case timeDifferenceInDays > 1:
+      return createdAtDate.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      });
+
+    case timeDifferenceInDays === 1:
+      return "1d";
+
+    case timeDifferenceInHours >= 1:
+      return `${timeDifferenceInHours}h`;
+
+    case timeDifferenceInMinutes >= 1:
+      return `${timeDifferenceInMinutes}m`;
+
+    default:
+      return "Just now";
   }
 };
 

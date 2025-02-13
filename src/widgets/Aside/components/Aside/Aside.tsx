@@ -1,34 +1,27 @@
 "use client";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import { ROUTES } from "@/shared/constants";
+import { pathHelpers } from "@/shared/utils/pathHelpers";
 import { usePathname } from "next/navigation";
 import PostsWithSearch from "../PostsWithSearch";
 import UsersWithSearch from "../UsersWithSearch";
-
-const isProfilePath = (pathname: string | null) => pathname === ROUTES.PROFILE;
-
-const isOtherUserProfilePath = (pathname: string | null) =>
-  pathname?.startsWith(ROUTES.PROFILE) && pathname?.split("/").length === 3;
-
-const getOtherUsername = (pathname: string | null) =>
-  pathname?.split("/").pop();
 
 export const Aside = () => {
   const { user } = useAuth();
   const username = user?.username || "";
 
-  const pathname = usePathname();
+  const pathname = usePathname() as string;
 
-  const isProfile = isProfilePath(pathname);
-  const isOtherUserProfile = isOtherUserProfilePath(pathname);
+  const isCurrentUserProfile = pathHelpers.isCurrentUserProfile(pathname);
+  const isOtherUserProfile = pathHelpers.isOtherUserProfile(pathname);
+  const isPostPage = pathHelpers.isPostPath(pathname);
 
-  const otherUsername = getOtherUsername(pathname) || "";
+  const otherUsername = pathHelpers.getUsernameFromPath(pathname) || "";
 
-  if (isProfile || isOtherUserProfile) {
+  if (isCurrentUserProfile || isOtherUserProfile || isPostPage) {
     return (
       <PostsWithSearch
-        username={isOtherUserProfile ? otherUsername : username}
+        username={isCurrentUserProfile ? username : otherUsername}
       />
     );
   }

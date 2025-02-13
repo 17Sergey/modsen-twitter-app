@@ -1,5 +1,7 @@
 .container {
   padding: 0 var(--padding-base);
+  margin-top: var(--margin-base);
+
   display: flex;
   justify-content: center;
 }

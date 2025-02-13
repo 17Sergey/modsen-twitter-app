@@ -1,4 +1,5 @@
-button.logoutButton {
+div > button.logoutButton {
+  width: 100%;
   margin-top: var(--margin-base);
   background-color: var(--disabled);
 
@@ -7,7 +8,7 @@ button.logoutButton {
   }
 }
 
-button.dark {
+div > button.dark {
   background-color: transparent !important;
   border: 1px solid var(--white-color) !important;
 }

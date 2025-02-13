@@ -29,11 +29,13 @@ export const LogoutButton: FC = () => {
   };
 
   return (
-    <PrimaryButton
-      className={`${styles.logoutButton} ${themeName === THEME_NAMES.DARK && styles.dark}`}
-      onClick={handleLogout}
-    >
-      {isPending ? "Pending..." : "Log out"}
-    </PrimaryButton>
+    <div>
+      <PrimaryButton
+        onClick={handleLogout}
+        className={`${styles.logoutButton} ${themeName === THEME_NAMES.DARK && styles.dark}`}
+      >
+        {isPending ? "Pending..." : "Log out"}
+      </PrimaryButton>
+    </div>
   );
 };

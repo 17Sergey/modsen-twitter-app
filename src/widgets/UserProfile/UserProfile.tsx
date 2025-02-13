@@ -39,7 +39,7 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
   };
 
   return (
-    <section>
+    <section className={styles.section}>
       <header className={styles.header}>
         <div className={styles.overview}>
           <UserFullname fullName={user?.fullName} />

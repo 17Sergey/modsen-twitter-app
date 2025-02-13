@@ -42,6 +42,7 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
       {user && (
         <>
           <UserProfile user={user} />
+          <div className={styles.gap}></div>
           {isCurrentUser && (
             <div className={styles.addPost}>
               <AddPost />

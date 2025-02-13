@@ -4,6 +4,7 @@ import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import FollowButton from "@/shared/components/buttons/FollowButton";
 import { useFollow } from "@/shared/hooks/useFollow";
 import { FC } from "react";
+import styles from "./FollowUser.module.scss";
 
 interface FollowUserProps {
   userId: UserWithId["id"];
@@ -32,6 +33,7 @@ export const FollowUser: FC<FollowUserProps> = ({
 
   return (
     <FollowButton
+      className={styles.follow}
       isFollowing={isFollowed}
       isLoading={isPending}
       onClick={handleFollow}
