@@ -20,7 +20,11 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
 
   const currentUsername = username || currentUser?.username || "";
 
-  const { data: fetchedUser, isLoading } = useQuery<UserModel | undefined>({
+  const {
+    data: fetchedUser,
+    isLoading,
+    error,
+  } = useQuery<UserModel | undefined>({
     queryKey: [QUERY_KEYS.USER_PROFILE, currentUsername],
     queryFn: () => userAPI.getProfile(currentUsername),
     enabled: !!currentUsername,
@@ -29,6 +33,10 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
 
   const user = (fetchedUser || currentUser) as UserWithId;
   const isCurrentUser = user.username === currentUser?.username;
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
 
   if (isLoading)
     return (

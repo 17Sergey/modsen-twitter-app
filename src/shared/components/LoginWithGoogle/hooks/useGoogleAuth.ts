@@ -1,3 +1,4 @@
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { authAPI } from "@/pages/entry/api/auth";
 import { ROUTES } from "@/shared/constants";
 import { useMutation } from "@tanstack/react-query";
@@ -16,12 +17,15 @@ export const useGoogleAuth = () => {
   const [googleUser, setGoogleUser] = useState<User | null>(null);
   const [needToCreateUsername, setNeedToCreateUsername] = useState(false);
 
+  const { setCurrentUser } = useAuth();
+
   const { mutate: loginWithGoogleMutation, isPending: isLogginInWithGoogle } =
     useMutation({
       mutationFn: authAPI.loginWithGoogle,
       onSuccess: (response: LoginWithGoogleResponse | undefined) => {
         if (response?.isAuthenticated) {
           toast.success("Logged in successfully");
+          setCurrentUser(response.user as UserWithId);
           router.replace(ROUTES.FEED);
         } else {
           setGoogleUser(response?.user as User);
@@ -38,6 +42,8 @@ export const useGoogleAuth = () => {
     onSuccess: (user: UserWithId | undefined) => {
       if (user) {
         toast.success("Logged in successfully");
+
+        setCurrentUser(user);
         router.replace(ROUTES.FEED);
         setNeedToCreateUsername(false);
       }

@@ -45,6 +45,7 @@ export const LoginForm = () => {
     onSuccess: (user: UserWithId | undefined) => {
       if (user) {
         toast.success("Logged in successfully");
+
         setCurrentUser(user);
         router.replace(ROUTES.FEED);
       }

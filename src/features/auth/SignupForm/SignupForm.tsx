@@ -47,9 +47,8 @@ export const SignupForm = () => {
   const { mutate: signupMutation } = useMutation({
     mutationFn: authAPI.signup,
     onSuccess: (user) => {
-      console.log(user);
-
       toast.success("Signed up successfully!");
+
       setCurrentUser(user);
       router.replace(ROUTES.FEED);
     },

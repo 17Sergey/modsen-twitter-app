@@ -1,4 +1,4 @@
-import { PROTECTED_ROUTES, ROUTES } from "../constants";
+import { PROTECTED_ROUTES, ROUTES, UNAUTHORIZED_ROUTES } from "../constants";
 
 export const pathHelpers = {
   isProtectedRoute(path: string) {
@@ -7,6 +7,9 @@ export const pathHelpers = {
       this.isOtherUserProfile(path) ||
       this.isPostPath(path)
     );
+  },
+  isUnauthorizedRoute(path: string) {
+    return UNAUTHORIZED_ROUTES.includes(path);
   },
   isCurrentUserProfile: (path: string) => {
     const regex = new RegExp(`^${ROUTES.PROFILE}$`);

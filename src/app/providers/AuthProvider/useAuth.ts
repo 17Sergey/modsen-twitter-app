@@ -7,7 +7,5 @@ export function useAuth() {
   if (context === undefined)
     throw new Error("Component must be wrapped in AuthProvider");
 
-  const { user, setCurrentUser } = context;
-
-  return { user, setCurrentUser };
+  return context;
 }

@@ -1,3 +1,4 @@
+import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import { authAPI } from "@/pages/entry/api/auth";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
@@ -13,10 +14,16 @@ export const LogoutButton: FC = () => {
 
   const router = useRouter();
 
+  const { setCurrentUser, setDidLogout } = useAuth();
+
   const { mutate, isPending } = useMutation({
     mutationFn: authAPI.logout,
     onSuccess: () => {
       toast.success("Logged out successfully");
+
+      setCurrentUser(null);
+      setDidLogout(true);
+
       router.push(ROUTES.ENTRY);
     },
     onError: (error) => {
