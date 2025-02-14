@@ -1,13 +1,18 @@
 "use client";
 
 import { ThemeContext } from "@/app/providers/ThemeProvider/context";
-import { THEME_NAMES } from "@/shared/constants";
+import { LOCAL_STORAGE_KEYS, THEME_NAMES } from "@/shared/constants";
+import {
+  getItemFromLocalStorage,
+  setItemToLocalStorage,
+} from "@/shared/utils/localStorageHelpers";
 import { FC, PropsWithChildren, useEffect, useState } from "react";
 
 const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
   const [themeName, setThemeName] = useState(() => {
-    const item = global?.window?.localStorage.getItem("theme");
-    return item ? JSON.parse(item) : THEME_NAMES.LIGHT;
+    return (
+      getItemFromLocalStorage(LOCAL_STORAGE_KEYS.THEME) || THEME_NAMES.LIGHT
+    );
   });
 
   const toggleThemeHandler = () => {
@@ -15,12 +20,11 @@ const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
       themeName === THEME_NAMES.LIGHT ? THEME_NAMES.DARK : THEME_NAMES.LIGHT;
 
     setThemeName(newTheme);
-    global?.window?.localStorage.setItem("theme", JSON.stringify(newTheme));
   };
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", themeName);
-    global?.window?.localStorage.setItem("theme", JSON.stringify(themeName));
+    setItemToLocalStorage(LOCAL_STORAGE_KEYS.THEME, themeName);
   }, [themeName]);
 
   return (
