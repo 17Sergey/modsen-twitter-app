@@ -38,6 +38,5 @@ const loginChecks = (user: UserWithId | undefined, password: string) => {
       "Your account is associated with Google auth. Try using Google",
     );
 
-  // TODO: add hashing
   if (user.password !== password) throw new Error("Invalid password");
 };

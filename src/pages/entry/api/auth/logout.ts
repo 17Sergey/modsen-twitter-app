@@ -1,10 +1,9 @@
 import { auth } from "@/app/api/firebase";
+import { API_ROUTES } from "@/shared/constants";
 import { signOut } from "firebase/auth";
 
 export const logout = async () => {
-  await signOut(auth);
-
-  await fetch("/api/auth/logout", {
+  await fetch(API_ROUTES.LOGOUT, {
     method: "POST",
     credentials: "include",
   });

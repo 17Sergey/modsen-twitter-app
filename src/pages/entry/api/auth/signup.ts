@@ -16,7 +16,7 @@ export const signup = async (formData: ISignupInput) => {
     username,
     email,
     fullName,
-    password, // TODO: add hashing
+    password,
     isSocialAuth: false,
     createdAt: Date.now(),
   };

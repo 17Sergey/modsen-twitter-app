@@ -9,6 +9,7 @@ export default async function PostWithId({
   const postId = (await params).id;
 
   const postData = await postAPI.getPostById(postId);
+
   let postDataObject = undefined;
 
   if (postData) {
