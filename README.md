@@ -1,10 +1,105 @@
-This project was initialized from a Next.js Starter, and contains the following changes:
+# Техническое задание приложение Modsen Twitter
 
-1. The `tsconfig.json` was updated to point the `@` alias to `./src` instead of `./`
-2. The `tailwind.config.ts` was updated to include files in `./src`
-3. The `src` folder was created to contain the FSD layers
-4. The `pages` folder was created with a `.gitkeep` file to prevent Next.js from treating `src/pages` as a Pages router
-5. The code of `app/layout.tsx` was moved to `src/app/layouts/index.tsx`
-6. The code of `app/page.tsx` was moved to `src/pages/home/ui/HomePage.tsx`
-7. The `app/globals.css` was moved to `src/app/styles/globals.css`
-8. Another page, `/deeper`, was added
+Приложение, схожее по своей функциональности с платформой Twitter с использование server-side rendering(NextJS).
+
+## Деплой
+
+Vercel:
+https://modsen-twitter-app.vercel.app/
+
+## Необходимый функционал:
+
+- Авторизация пользователя;
+- Регистрация пользователя;
+- Просмотр постов пользователя и других пользователей;
+- Возможность создания нового поста;
+- Поиск и отображение постов и пользователей;
+- Валидация введенных данных;
+- Изменение данных пользователя;
+- Смена темы приложения;
+- Использование SSR
+
+## Дополнительный функционал:
+
+- Добавление комментариев
+- Хранение картинок из постов и комментариев в Cloudinary
+- Использование паттерна Repository для доступа к данным
+- Использование React Query для получения данных
+- JWT-аутентификация
+- Редиректы в приложении в зависимости от авторизации пользователя
+
+## Тестирование:
+
+- Unit тесты Jest
+- E2E тесты Cypress
+
+## Описание экранов
+
+1. Путь /signup
+
+На данной странице пользователь может ввести свое имя, почту, дату рождения для того, чтобы зарегистрироваться. Все поля должны быть обязательными.
+При нажатии на "Use Google" пользователя переходит на страницу авторизации
+На этой странице пользователь может зарегистрироваться с помощью google-аккаунта или перейти на страницу регистрации
+
+2. Путь /login
+
+На данной странице пользователь может зайти в аккаунт введя свой логин. В случае того, если аккаунта не существует, оповестить об этом пользователя.
+При нажатии на "Sign up to Twitter" пользователь переходит на страницу авторизации
+
+3. Путь /profile
+
+На странице профиля отображается информация о пользователе. При нажатии на "edit profile" открывается модальное окно в котором можно добавить/изменить данные о пользователе: имя, фамилия, пароль, пол, ссылка на телеграмм.
+В категории "What’s happening" можно создать новый пост, также есть возможность добавить картинку, поставить лайк и удалить созданный пост. Необходимо добавить ограничение на ввод текста при создании поста и ограничение на размер и разрешение добавляемой картинки.
+В категории Tweets отображаются созданные пользователем посты.
+В поле ввода "Search Twitter" можно ввести название поста и в списке должен появиться пост, при нажатии на который он открывается в новом окне.
+При нажатии на Tweet(в сайдбаре) открывается модальное окно, в котором можно также создать новый пост(также с добавлением картинки).
+Предусмотрена возможность выхода из аккаунта при нажатии на "Log out".
+
+4. Путь /feed
+
+В шапке страницы есть возможность сменить общую тему приложения.
+На странице есть возможность создать новый пост, который добавится на текущей странице и на странице самого пользователя, а также отображаются посты других пользователей. Сами посты должны подгружаться по 5 штук, чтобы сильно не подвисал пользовательский интерфейс из-за большого количества постов.
+В поиске "Search Users" происходит список пользователей(поиск должен происходить на стороне firebase и была возможность у твитов поставить лайк).
+
+## Визуальное представление:
+
+Entry страница:
+![image](https://github.com/user-attachments/assets/8c79b0c5-cb51-4678-9b4c-87e408b31cbc)
+
+Log in страница:
+![image](https://github.com/user-attachments/assets/cbbf35aa-10da-4132-9257-21643f7828e0)
+
+Sign up страница:
+![image](https://github.com/user-attachments/assets/42b6f8d6-c473-420a-be9b-b870409e376f)
+
+Лента постов:
+![image](https://github.com/user-attachments/assets/b893e61e-7ce0-4224-9c1f-224ed41fc44c)
+
+Профиль пользователя:
+![image](https://github.com/user-attachments/assets/695de06f-ba7a-45f8-b895-d7027ce2d555)
+
+Редактирование профиля:
+![image](https://github.com/user-attachments/assets/52d763c5-c2b2-43a2-82db-c9286d43241c)
+
+Поиск поста:
+![image](https://github.com/user-attachments/assets/31160d78-13f4-40af-8918-557d3d6451f9)
+
+Поиск пользователя:
+![image](https://github.com/user-attachments/assets/c786983d-0d08-4f49-9289-59bf4ffe98dd)
+
+Профиль другого пользователя:
+![image](https://github.com/user-attachments/assets/18d1b31a-0eac-4f3c-8cc9-48dc47812239)
+
+Пост другого пользователя:
+![image](https://github.com/user-attachments/assets/9ab359a7-e588-42ef-94bd-fce5d94e8dbc)
+
+Бургер-меню:
+![image](https://github.com/user-attachments/assets/daf9bf67-1f25-4501-9d1a-c0b5624d6efe)
+![image](https://github.com/user-attachments/assets/c26c78c3-f919-41b0-8088-f15836fb2061)
+
+Лоадер:
+![image](https://github.com/user-attachments/assets/7a924c5f-6bde-4c99-831d-c3ee729665eb)
+
+Темная тема:
+![image](https://github.com/user-attachments/assets/f7141e28-ba9b-4251-87c5-73e102aa3eaa)
+
