@@ -1,17 +1,24 @@
 import { FC } from "react";
 
-import LoaderIcon from "@/shared/assets/loader.svg";
-import Image from "next/image";
+import { ICONS } from "@/shared/constants";
+import IconMatcher from "../icons/IconMatcher";
 import styles from "./Loader.module.scss";
 
 type LoaderVariants = "sm" | "md" | "lg";
 
 interface LoaderProps {
   variant: LoaderVariants;
+  loaderIconClassName?: string;
 }
 
-export const Loader: FC<LoaderProps> = ({ variant = "md" }) => (
+export const Loader: FC<LoaderProps> = ({
+  variant = "md",
+  loaderIconClassName = "",
+}) => (
   <div className={`${styles.loader} ${styles[variant]}`}>
-    <Image src={LoaderIcon} alt="loader" />
+    <IconMatcher
+      name={ICONS.LOADER}
+      className={`${styles.loaderIcon} ${loaderIconClassName}`}
+    />
   </div>
 );

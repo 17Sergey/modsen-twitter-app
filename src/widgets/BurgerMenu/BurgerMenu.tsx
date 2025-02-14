@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
-import BurgerIcon from "@/shared/assets/sidebar/BurgerMenu.svg";
-import CloseIcon from "@/shared/assets/sidebar/CrossIcon.svg";
 import TwitterLogo from "@/shared/assets/twitter.svg";
+import BurgerMenuIcon from "@/shared/components/icons/BurgerMenuIcon";
+import CloseIcon from "@/shared/components/icons/CloseIcon";
 import { ROUTES } from "@/shared/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,13 +40,9 @@ export const BurgerMenu: FC = () => {
           aria-label="Open menu"
           onClick={toggleMenu}
         >
-          <Image
-            className={styles.burgerIcon}
-            src={BurgerIcon}
-            alt={"Burger menu"}
-            width={24}
-            height={24}
-          />
+          <div className={styles.burger}>
+            <BurgerMenuIcon className={styles.burgerIcon} />
+          </div>
         </button>
         {isMenuOpen && (
           <div className={styles.overlay} onClick={toggleMenu}></div>
@@ -61,13 +57,9 @@ export const BurgerMenu: FC = () => {
             aria-label="Close menu"
             onClick={toggleMenu}
           >
-            <Image
-              className={styles.closeIcon}
-              src={CloseIcon}
-              alt={"Close menu"}
-              width={24}
-              height={24}
-            />
+            <div className={styles.close}>
+              <CloseIcon className={styles.closeIcon} />
+            </div>
           </button>
           <div className={styles.menuContent}>
             <SidebarItems />

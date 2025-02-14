@@ -60,3 +60,16 @@ export const QUERY_KEYS = {
 export const LOCAL_STORAGE_KEYS = {
   THEME: "theme",
 };
+
+export const ICONS = {
+  HOME: "HOME",
+  EXPLORE: "EXPLORE",
+  NOTIFICATIONS: "NOTIFICATIONS",
+  MESSAGES: "MESSAGES",
+  BOOKMARKS: "BOOKMARKS",
+  LISTS: "LISTS",
+  PROFILE: "PROFILE",
+  MORE: "MORE",
+
+  LOADER: "LOADER",
+};

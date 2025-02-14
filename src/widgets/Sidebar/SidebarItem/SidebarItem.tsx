@@ -1,4 +1,4 @@
-import Image from "next/image";
+import IconMatcher from "@/shared/components/icons/IconMatcher";
 import Link from "next/link";
 import { FC } from "react";
 import styles from "./SidebarItem.module.scss";
@@ -11,7 +11,9 @@ interface SidebarItemProps {
 
 export const SidebarItem: FC<SidebarItemProps> = ({ icon, label, route }) => (
   <Link href={route} className={styles.sidebarItem}>
-    <Image src={icon} alt={`${label} icon`} className={styles.icon} />
+    <div className={styles.iconContainer}>
+      <IconMatcher name={icon} className={styles.icon} />
+    </div>
     <span>{label}</span>
   </Link>
 );

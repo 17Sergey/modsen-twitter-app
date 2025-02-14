@@ -20,9 +20,13 @@
   height: var(--width-icon-base);
 }
 
-.burgerIcon {
+.burger {
   width: var(--width-icon-base);
   height: var(--width-icon-base);
+}
+
+.burgerIcon {
+  color: var(--text-default);
 }
 
 .overlay {
@@ -47,7 +51,7 @@
   flex-direction: column;
   align-items: left;
 
-  max-height: 100svh;
+  height: 100svh;
   overflow-y: auto;
 
   padding: var(--padding-base);
@@ -64,9 +68,13 @@
   align-self: flex-end;
 }
 
-.closeIcon {
+.close {
   width: var(--width-icon-base);
   height: var(--width-icon-base);
+}
+
+.closeIcon {
+  color: var(--text-default);
 }
 
 .menuContent {

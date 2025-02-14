@@ -3,14 +3,21 @@
   align-items: center;
 }
 
+.loaderIcon {
+  color: var(--primary-color);
+}
+
 .sm {
   width: var(--width-icon-xs);
+  height: var(--width-icon-xs);
 }
 
 .md {
   width: var(--width-icon-base);
+  height: var(--width-icon-base);
 }
 
 .lg {
   width: var(--width-icon-lg);
+  height: var(--width-icon-lg);
 }
