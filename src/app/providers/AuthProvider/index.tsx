@@ -35,40 +35,26 @@ const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
 
   const passedUser = user || fetchedUser || null;
 
+  const redirectUnauthorizedUserToEntry =
+    !isLoading && !passedUser && pathHelpers.isProtectedRoute(pathname || "");
+
+  const redirectAuthorizedUserToFeed =
+    !isLoading &&
+    fetchedUser &&
+    !didLogout &&
+    pathHelpers.isUnauthorizedRoute(pathname || "");
+
   useEffect(() => {
-    if (
-      !isLoading &&
-      !passedUser &&
-      pathHelpers.isProtectedRoute(pathname || "")
-    ) {
+    if (redirectUnauthorizedUserToEntry) {
       router.push(ROUTES.ENTRY);
     }
-    if (
-      !isLoading &&
-      fetchedUser &&
-      !didLogout &&
-      pathHelpers.isUnauthorizedRoute(pathname || "")
-    ) {
+    if (redirectAuthorizedUserToFeed) {
       router.push(ROUTES.FEED);
     }
   }, [isLoading, passedUser, pathname, router]);
 
-  if (
-    !isLoading &&
-    !passedUser &&
-    pathHelpers.isProtectedRoute(pathname || "")
-  ) {
+  if (redirectAuthorizedUserToFeed || redirectUnauthorizedUserToEntry)
     return null;
-  }
-
-  if (
-    !isLoading &&
-    fetchedUser &&
-    !didLogout &&
-    pathHelpers.isUnauthorizedRoute(pathname || "")
-  ) {
-    return null;
-  }
 
   if (isLoading)
     return (
