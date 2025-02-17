@@ -3,9 +3,9 @@
 import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { userAPI } from "@/entities/user/api/userAPI";
 import AddPost from "@/features/post/addPost/components/AddPost";
+import UserProfile from "@/features/profile/UserProfile";
 import Loader from "@/shared/components/Loader";
 import { QUERY_KEYS } from "@/shared/constants";
-import UserProfile from "@/widgets/UserProfile";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 import styles from "./ProfilePage.module.scss";
@@ -47,7 +47,7 @@ export const ProfilePage: FC<ProfilePageProps> = ({ username }) => {
 
   return (
     <>
-      {user && (
+      {!!user && (
         <>
           <UserProfile user={user} />
           <div className={styles.gap}></div>

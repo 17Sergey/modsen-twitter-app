@@ -26,7 +26,7 @@ export const Comment: FC<CommentProps> = ({ comment, user }) => {
         </div>
 
         <p>{text}</p>
-        {img && (
+        {!!img && (
           <img src={img} alt="Post image" className={styles.commentImg} />
         )}
       </div>

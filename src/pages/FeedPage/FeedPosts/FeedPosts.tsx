@@ -14,10 +14,10 @@ export const FeedPosts: FC = () => {
   const { user } = useAuth();
   const username = user?.username || "";
 
-  const [page, setPage] = useState(1);
-  const [displayedPosts, setDisplayedPosts] = useState<
-    PostWithUser[] | undefined
-  >(undefined);
+  const [page, setPage] = useState(0);
+  const [displayedPosts, setDisplayedPosts] = useState<PostWithUser[] | null>(
+    null,
+  );
 
   const {
     data: postsData,
@@ -25,9 +25,9 @@ export const FeedPosts: FC = () => {
     error,
     isRefetching,
     refetch,
-  } = useQuery<PaginationPosts | undefined>({
+  } = useQuery<PaginationPosts | null>({
     queryKey: [QUERY_KEYS.FEED_POSTS],
-    queryFn: () => postAPI.getFeedPosts(username, page),
+    queryFn: () => postAPI.getFeedPosts(username, page + 1),
     retry: false,
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
@@ -49,6 +49,11 @@ export const FeedPosts: FC = () => {
       prevPosts ? [...prevPosts, ...newPosts] : [...newPosts],
     );
   }, [postsData]);
+
+  useEffect(() => {
+    setPage(0);
+    setDisplayedPosts(null);
+  }, []);
 
   return (
     <>

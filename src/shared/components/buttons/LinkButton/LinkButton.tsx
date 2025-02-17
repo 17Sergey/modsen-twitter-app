@@ -9,13 +9,11 @@ export const LinkButton: FC<LinkButtonProps> = ({
   className,
   children,
   ...props
-}) => {
-  return (
-    <Link
-      className={`${buttonStyles.button} ${styles.linkButton} ${className}`}
-      {...props}
-    >
-      {children}
-    </Link>
-  );
-};
+}) => (
+  <Link
+    className={`${buttonStyles.button} ${styles.linkButton} ${className}`}
+    {...props}
+  >
+    {children}
+  </Link>
+);

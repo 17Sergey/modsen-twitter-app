@@ -8,13 +8,11 @@ export const ActionButton: FC<ButtonProps> = ({
   className,
   children,
   ...props
-}) => {
-  return (
-    <Button
-      className={`${styles.actionButton} ${primaryButtonStyles.primaryButton} ${className}`}
-      {...props}
-    >
-      {children}
-    </Button>
-  );
-};
+}) => (
+  <Button
+    className={`${styles.actionButton} ${primaryButtonStyles.primaryButton} ${className}`}
+    {...props}
+  >
+    {children}
+  </Button>
+);

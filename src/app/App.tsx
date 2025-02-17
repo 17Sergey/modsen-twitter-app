@@ -12,9 +12,7 @@ export const App: FC<PropsWithChildren> = ({ children }) => (
     <QueryProvider>
       <ToastsProvider>
         <AuthProvider>
-          <LayoutProvider>
-            <>{children}</>
-          </LayoutProvider>
+          <LayoutProvider>{children}</LayoutProvider>
         </AuthProvider>
       </ToastsProvider>
     </QueryProvider>

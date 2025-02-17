@@ -7,10 +7,8 @@ export const PrimaryButton: FC<ButtonProps> = ({
   className,
   children,
   ...props
-}) => {
-  return (
-    <Button className={`${styles.primaryButton} ${className}`} {...props}>
-      {children}
-    </Button>
-  );
-};
+}) => (
+  <Button className={`${styles.primaryButton} ${className}`} {...props}>
+    {children}
+  </Button>
+);

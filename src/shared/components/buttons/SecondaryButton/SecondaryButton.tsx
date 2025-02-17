@@ -8,14 +8,12 @@ export const SecondaryButton: FC<ButtonProps> = ({
   children,
   disabled = false,
   ...props
-}) => {
-  return (
-    <Button
-      className={`${styles.secondaryButton} ${className}`}
-      {...props}
-      disabled={disabled}
-    >
-      {children}
-    </Button>
-  );
-};
+}) => (
+  <Button
+    className={`${styles.secondaryButton} ${className}`}
+    {...props}
+    disabled={disabled}
+  >
+    {children}
+  </Button>
+);

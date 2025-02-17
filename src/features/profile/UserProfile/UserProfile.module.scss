@@ -42,7 +42,7 @@
   transform: translateY(-60px);
 }
 
-.profileImage {
+.left > .profileImage {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
@@ -50,11 +50,11 @@
   position: relative;
 }
 
-.name {
+.left > .name {
   font-size: var(--font-size-md);
 }
 
-.username {
+.left > .username {
   margin-top: var(--margin-xs);
 }
 

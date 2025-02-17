@@ -89,7 +89,7 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
         placeholder={placeholder}
         {...register("text")}
       />
-      {img && (
+      {!!img && (
         <div className={styles.imageContainer}>
           <div className={styles.close}>
             <Image

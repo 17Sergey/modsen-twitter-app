@@ -4,7 +4,7 @@ import { FC } from "react";
 import styles from "./Posts.module.scss";
 
 interface PostsProps {
-  posts: PostWithUser[] | undefined;
+  posts: PostWithUser[] | null | undefined;
   isLoading: boolean;
   error: string | null;
   noDataMessage?: string;

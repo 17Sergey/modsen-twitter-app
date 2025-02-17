@@ -73,3 +73,9 @@ export const ICONS = {
 
   LOADER: "LOADER",
 };
+
+export const PORT_FOR_E2E_TESTS = 3000;
+
+export const DATA_CY = {
+  LOGIN_WITH_GOOGLE: "LOGIN_WITH_GOOGLE",
+};

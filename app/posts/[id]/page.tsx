@@ -10,11 +10,5 @@ export default async function PostWithId({
 
   const postData = await postAPI.getPostById(postId);
 
-  let postDataObject = undefined;
-
-  if (postData) {
-    postDataObject = JSON.parse(JSON.stringify(postData));
-  }
-
-  return <PostPage postData={postDataObject} />;
+  return <PostPage postData={postData} />;
 }

@@ -2,10 +2,18 @@ import { userRepository } from "@/entities/user/api/UserRepository";
 import { postRepository } from "./PostRepository";
 import { POSTS_PER_PAGE } from "../constants";
 
+// let prevPage = 0;
+
 export const getFeedPosts = async (
   username: UserModel["username"],
   page: number,
 ) => {
+  // if (page === prevPage) {
+  //   return null;
+  // } else {
+  //   prevPage = page;
+  // }
+
   const user = (await userRepository.getUserByUsername(username)) as UserWithId;
 
   if (!user)
