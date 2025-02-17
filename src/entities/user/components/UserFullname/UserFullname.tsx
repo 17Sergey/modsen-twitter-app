@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { ComponentProps, FC } from "react";
 
 import styles from "./UserFullname.module.scss";
 
-interface UserFullnameProps {
+interface UserFullnameProps extends ComponentProps<"p"> {
   fullName: string;
   className?: string;
 }
@@ -10,4 +10,9 @@ interface UserFullnameProps {
 export const UserFullname: FC<UserFullnameProps> = ({
   fullName,
   className = "",
-}) => <p className={`${styles.fullname} ${className}`}>{fullName}</p>;
+  ...props
+}) => (
+  <p className={`${styles.fullname} ${className}`} {...props}>
+    {fullName}
+  </p>
+);

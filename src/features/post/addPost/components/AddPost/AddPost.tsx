@@ -4,7 +4,7 @@ import { UserImg } from "@/entities/user/components/UserImg/UserImg";
 import AdvancedTextarea from "@/shared/components/AdvancedTextarea";
 import { useAdvancedTextarea } from "@/shared/components/AdvancedTextarea/useAdvancedTextarea";
 import ActionButton from "@/shared/components/buttons/ActionButton";
-import { QUERY_KEYS } from "@/shared/constants";
+import { DATA_CY, QUERY_KEYS } from "@/shared/constants";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FC } from "react";
 import toast from "react-hot-toast";
@@ -62,7 +62,11 @@ export const AddPost: FC<AddPostProps> = ({ onAdd }) => {
   };
 
   const renderButton = (
-    <ActionButton onClick={handleAddPost} disabled={isPending}>
+    <ActionButton
+      onClick={handleAddPost}
+      disabled={isPending}
+      data-cy={DATA_CY.PROFILE.ADD_POST.ADD_BTN}
+    >
       {isPending ? "Tweeting..." : "Tweet"}
     </ActionButton>
   );
@@ -76,6 +80,7 @@ export const AddPost: FC<AddPostProps> = ({ onAdd }) => {
           onTextChange={handleTextChange}
           onImgChange={handleImgChange}
           renderButton={renderButton}
+          textAreaTestId={DATA_CY.PROFILE.ADD_POST.TEXTAREA_TEST_ID}
         />
       </div>
     </div>

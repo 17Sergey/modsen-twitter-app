@@ -1,7 +1,7 @@
 import {
   ROUTES,
   PROTECTED_ROUTES,
-  PORT_FOR_E2E_TESTS,
+  TESTS_URL,
 } from "../../src/shared/constants";
 
 describe("Protected Routes Security", () => {
@@ -11,7 +11,7 @@ describe("Protected Routes Security", () => {
 
   PROTECTED_ROUTES.forEach((route) => {
     it(`Should redirect to login when accessing ${route} without authentication`, () => {
-      cy.visit(`http://localhost:${PORT_FOR_E2E_TESTS}${route}`);
+      cy.visit(`${TESTS_URL}${route}`);
       cy.url().should("include", ROUTES.ENTRY);
     });
   });

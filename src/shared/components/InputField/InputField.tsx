@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { ComponentProps, FC } from "react";
 import styles from "./InputField.module.scss";
 
-interface InputFieldProps {
+interface InputFieldProps extends ComponentProps<"input"> {
   type: string;
   placeholder: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -16,10 +16,16 @@ export const InputField: FC<InputFieldProps> = ({
   register,
   name,
   error,
+  ...props
 }) => {
   return (
     <div className={styles.inputGroup}>
-      <input {...register(name)} type={type} placeholder={placeholder} />
+      <input
+        {...register(name)}
+        type={type}
+        placeholder={placeholder}
+        {...props}
+      />
       {error && <span className={styles.error}>{error}</span>}
     </div>
   );

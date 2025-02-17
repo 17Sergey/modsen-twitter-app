@@ -9,7 +9,7 @@ import FollowUser from "@/features/user/FollowUser";
 import CoverImg from "@/shared/assets/images/profile-cover.jpg";
 import Button from "@/shared/components/buttons/Button";
 import ToggleTheme from "@/shared/components/ToggleTheme";
-import { QUERY_KEYS } from "@/shared/constants";
+import { DATA_CY, QUERY_KEYS } from "@/shared/constants";
 import { useModal } from "@/shared/hooks/useModal";
 import { useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
@@ -57,8 +57,16 @@ export const UserProfile: FC<UserProfileProps> = ({ user }) => {
           <div className={styles.profileData}>
             <div className={styles.left}>
               <UserImg src={user?.profileImg} className={styles.profileImage} />
-              <UserFullname fullName={user?.fullName} className={styles.name} />
-              <Username username={user?.username} className={styles.username} />
+              <UserFullname
+                fullName={user?.fullName}
+                className={styles.name}
+                data-cy={DATA_CY.PROFILE.FULLNAME}
+              />
+              <Username
+                username={user?.username}
+                className={styles.username}
+                data-cy={DATA_CY.PROFILE.USERNAME}
+              />
               {user?.bio && <p className={styles.bio}>{user?.bio}</p>}
               {user?.link && <p className={styles.link}>Link: {user?.link}</p>}
             </div>

@@ -4,7 +4,7 @@ import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
 import Select from "@/shared/components/Select";
-import { ROUTES } from "@/shared/constants";
+import { DATA_CY, ROUTES } from "@/shared/constants";
 import { signupValidation } from "@/shared/utils/signupValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
@@ -75,14 +75,15 @@ export const SignupForm = () => {
       <h2 className={styles.heading}>Create an account</h2>
 
       <ul>
-        {inputFields.map((field) => (
-          <li className={styles.field} key={field.name}>
+        {inputFields.map(({ name, type, placeholder, testId }) => (
+          <li className={styles.field} key={name}>
             <InputField
-              type={field.type}
-              placeholder={field.placeholder}
+              type={type}
+              placeholder={placeholder}
               register={register}
-              name={field.name}
-              error={errors[field.name]?.message}
+              name={name}
+              error={errors[name]?.message}
+              data-cy={testId}
             />
           </li>
         ))}
@@ -121,7 +122,9 @@ export const SignupForm = () => {
       </div>
 
       <div className={styles.buttons}>
-        <PrimaryButton type="submit">Next</PrimaryButton>
+        <PrimaryButton type="submit" data-cy={DATA_CY.SIGNUP.SUBMIT_BTN}>
+          Next
+        </PrimaryButton>
         <div className={styles.link}>
           <Link href={ROUTES.LOGIN}>Log in to Twitter</Link>
         </div>

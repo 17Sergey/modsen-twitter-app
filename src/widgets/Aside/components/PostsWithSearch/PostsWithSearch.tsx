@@ -1,13 +1,13 @@
 "use client";
 
+import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import Search from "@/shared/components/Search";
+import { DATA_CY, THEME_NAMES } from "@/shared/constants";
 import { FC, useState } from "react";
 import asideStyles from "../Aside/Aside.module.scss";
 import AsidePosts from "../AsidePosts";
 import { useSearchPosts, useSuggestedPosts } from "./hooks";
 import styles from "./PostsWithSearch.module.scss";
-import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
-import { THEME_NAMES } from "@/shared/constants";
 
 interface PostsWithSearchProps {
   username: string;
@@ -51,6 +51,7 @@ export const PostsWithSearch: FC<PostsWithSearchProps> = ({ username }) => {
         onQueryChanged={handleQueryChange}
         isDebounced={true}
         placeholder={"Search posts..."}
+        testId={DATA_CY.ASIDE.POSTS_SEARCH}
       />
       <div
         className={`${asideStyles.content} ${themeName === THEME_NAMES.DARK && asideStyles.darkContent}`}

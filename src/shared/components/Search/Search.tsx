@@ -1,21 +1,23 @@
 import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import SearchIcon from "@/shared/assets/search.svg";
+import { THEME_NAMES } from "@/shared/constants";
 import { useDebounce } from "@/shared/hooks/useDebounce";
 import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
 import styles from "./Search.module.scss";
-import { THEME_NAMES } from "@/shared/constants";
 
 interface SearchProps {
   onQueryChanged: (query: string) => void;
   isDebounced?: boolean;
   placeholder?: string;
+  testId?: string;
 }
 
 export const Search: FC<SearchProps> = ({
   onQueryChanged,
   isDebounced = false,
   placeholder = "Search...",
+  testId = "",
 }) => {
   const { themeName } = useTheme();
 
@@ -39,6 +41,7 @@ export const Search: FC<SearchProps> = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className={styles.input}
+        data-cy={testId}
       />
     </div>
   );

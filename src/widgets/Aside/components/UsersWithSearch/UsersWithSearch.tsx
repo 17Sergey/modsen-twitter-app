@@ -2,7 +2,7 @@
 
 import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import Search from "@/shared/components/Search";
-import { THEME_NAMES } from "@/shared/constants";
+import { DATA_CY, THEME_NAMES } from "@/shared/constants";
 import { useState } from "react";
 import asideStyles from "../Aside/Aside.module.scss";
 import AsideUsers from "../AsideUsers";
@@ -47,6 +47,7 @@ export const UsersWithSearch = () => {
         onQueryChanged={handleQueryChange}
         isDebounced={true}
         placeholder={"Search users..."}
+        testId={DATA_CY.ASIDE.USERS_SEARCH}
       />
       <div
         className={`${asideStyles.content} ${themeName === THEME_NAMES.DARK && asideStyles.darkContent}`}

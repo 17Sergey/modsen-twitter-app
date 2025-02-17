@@ -6,7 +6,7 @@ import TwitterIcon from "@/shared/assets/twitter.svg";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
 import InputField from "@/shared/components/InputField";
 import LoginWithGoogle from "@/shared/components/LoginWithGoogle";
-import { ROUTES } from "@/shared/constants";
+import { DATA_CY, ROUTES } from "@/shared/constants";
 import { loginValidation } from "@/shared/utils/loginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
@@ -89,6 +89,7 @@ export const LoginForm = () => {
               register={register}
               name={"usernameOrEmail"}
               error={errors.usernameOrEmail?.message}
+              data-cy={DATA_CY.LOGIN.USERNAME_OR_EMAIL}
             />
             <InputField
               type="password"
@@ -96,10 +97,15 @@ export const LoginForm = () => {
               register={register}
               name={"password"}
               error={errors.password?.message}
+              data-cy={DATA_CY.LOGIN.PASSWORD}
             />
           </div>
 
-          <PrimaryButton type="submit" className={styles.submitButton}>
+          <PrimaryButton
+            type="submit"
+            className={styles.submitButton}
+            data-cy={DATA_CY.LOGIN.SUBMIT_BTN}
+          >
             Log in
           </PrimaryButton>
 

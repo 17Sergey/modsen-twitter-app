@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/shared/components/Loader";
+import { DATA_CY } from "@/shared/constants";
 import { FC } from "react";
 import { AsidePost } from "../AsidePost/AsidePost";
 import AsidePostImage from "../AsidePostImage";
@@ -33,7 +34,10 @@ export const AsidePosts: FC<AsidePostsProps> = ({
 
   if (postsData) {
     return (
-      <ul className={`${styles.posts} ${!withPostText && styles.imageGallery}`}>
+      <ul
+        className={`${styles.posts} ${!withPostText && styles.imageGallery}`}
+        data-cy={DATA_CY.ASIDE.POSTS_LIST}
+      >
         {postsData.posts.map((post) =>
           withPostText ? (
             <AsidePost key={post.id} post={post} user={postsData.user} />

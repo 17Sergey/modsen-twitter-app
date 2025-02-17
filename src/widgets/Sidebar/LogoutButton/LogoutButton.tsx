@@ -2,7 +2,7 @@ import { useAuth } from "@/app/providers/AuthProvider/useAuth";
 import { useTheme } from "@/app/providers/ThemeProvider/useTheme";
 import { authAPI } from "@/pages/entry/api/auth";
 import PrimaryButton from "@/shared/components/buttons/PrimaryButton";
-import { ROUTES, THEME_NAMES } from "@/shared/constants";
+import { DATA_CY, ROUTES, THEME_NAMES } from "@/shared/constants";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
@@ -40,6 +40,7 @@ export const LogoutButton: FC = () => {
       <PrimaryButton
         onClick={handleLogout}
         className={`${styles.logoutButton} ${themeName === THEME_NAMES.DARK && styles.dark}`}
+        data-cy={DATA_CY.LOGOUT_BTN}
       >
         {isPending ? "Pending..." : "Log out"}
       </PrimaryButton>

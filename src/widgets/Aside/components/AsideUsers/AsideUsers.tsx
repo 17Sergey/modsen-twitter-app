@@ -3,6 +3,7 @@
 import Loader from "@/shared/components/Loader";
 import { FC } from "react";
 import { AsideUser } from "../AsideUser/AsideUser";
+import { DATA_CY } from "@/shared/constants";
 
 interface AsideUsersProps {
   users: UserWithId[] | undefined;
@@ -28,7 +29,7 @@ export const AsideUsers: FC<AsideUsersProps> = ({
 
   if (users) {
     return (
-      <>
+      <ul data-cy={DATA_CY.ASIDE.USERS_LIST}>
         {users.map(({ id, profileImg, fullName, username, followers }) => (
           <AsideUser
             key={id}
@@ -39,7 +40,7 @@ export const AsideUsers: FC<AsideUsersProps> = ({
             followers={followers}
           />
         ))}
-      </>
+      </ul>
     );
   }
 };

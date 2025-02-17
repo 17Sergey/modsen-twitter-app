@@ -2,7 +2,7 @@
 
 import { postAPI } from "@/entities/post/api";
 import Posts from "@/features/post/posts/components/Posts";
-import { QUERY_KEYS } from "@/shared/constants";
+import { DATA_CY, QUERY_KEYS } from "@/shared/constants";
 import { useQuery } from "@tanstack/react-query";
 import { FC } from "react";
 
@@ -22,6 +22,11 @@ export const UserPosts: FC<UserPostsProps> = ({ username }) => {
   });
 
   return (
-    <Posts posts={posts} isLoading={isLoading} error={error && error.message} />
+    <Posts
+      posts={posts}
+      isLoading={isLoading}
+      error={error && error.message}
+      testId={DATA_CY.PROFILE.POSTS_LIST}
+    />
   );
 };

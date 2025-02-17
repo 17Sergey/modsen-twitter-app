@@ -8,6 +8,7 @@ interface PostsProps {
   isLoading: boolean;
   error: string | null;
   noDataMessage?: string;
+  testId?: string;
 }
 
 export const Posts: FC<PostsProps> = ({
@@ -15,6 +16,7 @@ export const Posts: FC<PostsProps> = ({
   isLoading,
   error,
   noDataMessage,
+  testId = "",
 }) => {
   if (isLoading)
     return (
@@ -35,10 +37,10 @@ export const Posts: FC<PostsProps> = ({
 
   if (posts)
     return (
-      <>
+      <ul data-cy={testId}>
         {posts.map(({ post, user }) => (
           <Post key={post.id} post={post} user={user} />
         ))}
-      </>
+      </ul>
     );
 };

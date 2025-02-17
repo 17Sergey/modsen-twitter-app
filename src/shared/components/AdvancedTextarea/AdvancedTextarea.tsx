@@ -20,6 +20,7 @@ interface AdvancedTextareaProps {
   onImgChange: (newImg: string | null) => void;
   needToReset?: boolean;
   renderButton?: ReactNode;
+  textAreaTestId?: string;
 }
 
 interface AdvancedTextareaForm {
@@ -32,6 +33,7 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
   onImgChange,
   needToReset,
   renderButton,
+  textAreaTestId = "",
 }) => {
   const imgRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState<string | null>(null);
@@ -88,6 +90,7 @@ export const AdvancedTextarea: FC<AdvancedTextareaProps> = ({
         className={styles.textarea}
         placeholder={placeholder}
         {...register("text")}
+        data-cy={textAreaTestId}
       />
       {!!img && (
         <div className={styles.imageContainer}>
