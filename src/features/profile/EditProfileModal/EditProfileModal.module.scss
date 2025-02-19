@@ -1,0 +1,17 @@
+.heading {
+  font-size: var(--font-size-md);
+  font-family: var(--font-roboto-serif);
+
+  margin-bottom: var(--margin-base);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--margin-base) - var(--margin-sm));
+}
+
+.save {
+  margin-top: var(--margin-sm);
+  text-align: right;
+}

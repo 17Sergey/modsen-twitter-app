@@ -1,0 +1,67 @@
+@use "@/shared/styles/_breakpoints.scss" as *;
+
+.wrapper {
+  display: flex;
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.content {
+  padding: 0 var(--padding-xl);
+}
+
+.span {
+  font-size: 4rem;
+  font-weight: var(--font-weight-black);
+
+  @media only screen and (max-width: $breakpoint-xs) {
+    font-size: 3rem;
+  }
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-black);
+  margin: var(--margin-md) 0;
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    text-align: center;
+  }
+
+  @media only screen and (max-width: $breakpoint-xs) {
+    font-size: 1.75rem;
+  }
+}
+
+.icon {
+  margin: var(--margin-base) 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+.terms {
+  margin-top: var(--margin-m);
+
+  & a {
+    color: var(--primary-color);
+  }
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    text-align: center;
+  }
+}
+
+.login {
+  margin-top: var(--margin-m);
+
+  & a {
+    color: var(--primary-color);
+  }
+
+  @media only screen and (max-width: $breakpoint-sm) {
+    margin-bottom: var(--margin-md);
+    text-align: center;
+  }
+}

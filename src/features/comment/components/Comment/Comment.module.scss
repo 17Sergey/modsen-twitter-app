@@ -1,0 +1,22 @@
+.comment {
+  margin-top: var(--margin-base);
+  padding-bottom: var(--margin-base);
+
+  display: flex;
+  gap: var(--margin-sm);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--margin-sm);
+  margin-bottom: var(--margin-sm);
+}
+
+.commentImg {
+  border-radius: var(--padding-xs);
+  max-width: 400px;
+  width: 100%;
+
+  margin-top: var(--margin-base);
+}

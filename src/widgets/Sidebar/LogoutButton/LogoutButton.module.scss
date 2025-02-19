@@ -1,0 +1,14 @@
+div > button.logoutButton {
+  width: 100%;
+  margin-top: var(--margin-base);
+  background-color: var(--disabled);
+
+  &:hover {
+    background-color: var(--search-placeholder);
+  }
+}
+
+div > button.dark {
+  background-color: transparent !important;
+  border: 1px solid var(--white-color) !important;
+}

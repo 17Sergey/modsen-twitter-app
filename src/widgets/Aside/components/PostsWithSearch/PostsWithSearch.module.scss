@@ -1,0 +1,9 @@
+.suggest {
+  font-size: var(--font-size-md);
+  font-family: var(--font-roboto-serif);
+  font-weight: var(--font-weight-bold);
+
+  display: inline-block;
+
+  margin-bottom: calc(var(--margin-m) / 2);
+}

@@ -1,0 +1,16 @@
+.links {
+  display: flex;
+  justify-content: center;
+  gap: var(--padding-base);
+  flex-wrap: wrap;
+
+  padding: var(--padding-base) var(--padding-sm);
+}
+
+.linkItem {
+  font-size: var(--font-size-sm);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
