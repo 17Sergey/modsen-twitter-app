@@ -1,0 +1,10 @@
+button.primaryButton {
+  background-color: var(--primary-color);
+  border: none;
+
+  color: var(--white-color);
+
+  &:hover {
+    background-color: var(--primary-darker-color);
+  }
+}

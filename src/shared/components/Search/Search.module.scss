@@ -1,0 +1,29 @@
+.search {
+  display: flex;
+  align-items: center;
+  background: var(--placeholder);
+  border-radius: 20px;
+  padding: var(--padding-m);
+}
+
+.input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 0 var(--padding-sm);
+  flex-grow: 1;
+  font-size: var(--font-size-base);
+}
+
+.dark {
+  background-color: transparent;
+  border: 1px solid var(--placeholder);
+
+  &:focus-within {
+    border-color: var(--primary-color);
+  }
+
+  & > input {
+    color: var(--white-color);
+  }
+}

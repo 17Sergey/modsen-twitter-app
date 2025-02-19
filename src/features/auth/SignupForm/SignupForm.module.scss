@@ -1,0 +1,73 @@
+.formContainer {
+  max-width: 600px;
+  margin: 0 auto var(--margin-md);
+
+  padding: 0 var(--padding-base);
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.icon {
+  margin: var(--margin-base) 0;
+  width: 3rem;
+  height: 3rem;
+}
+
+.heading {
+  margin-bottom: var(--margin-base);
+  text-align: start;
+
+  font-family: var(--font-roboto-serif);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+}
+
+.field {
+  margin: 0 0 var(--margin-base);
+}
+
+.birthDateHeading {
+  font-size: var(--font-size-md);
+}
+
+.birthDateText {
+  text-align: left;
+  color: var(--text-neutral);
+  font-size: var(--font-size-sm);
+  line-height: 130%;
+}
+
+.buttons {
+  margin-top: var(--margin-md);
+
+  & > * {
+    width: 100%;
+    margin: var(--margin-sm) 0;
+    font-family: var(--font-roboto);
+  }
+}
+
+.dateContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+
+  margin: 1rem 0;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.link {
+  margin-top: var(--margin-base);
+  color: var(--primary-color);
+  text-align: right;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

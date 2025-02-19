@@ -1,0 +1,32 @@
+.group {
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.select {
+  font-size: var(--font-size-base);
+  color: var(--text-neutral);
+
+  background-color: transparent;
+
+  border: 1px solid #ccc;
+  padding: var(--padding-base);
+  height: 55px;
+  border-radius: 4px;
+
+  &.dark option {
+    background-color: var(--input-color);
+  }
+}
+
+.error {
+  position: absolute;
+  color: var(--error-color);
+  font-size: var(--font-size-sm);
+
+  bottom: -2.5rem;
+}
